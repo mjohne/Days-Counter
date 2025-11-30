@@ -1,6 +1,8 @@
-﻿using System.Diagnostics;
-using DaysCounter.Properties;
+﻿using DaysCounter.Properties;
+
 using NLog;
+
+using System.Diagnostics;
 
 namespace DaysCounter
 {
@@ -13,7 +15,7 @@ namespace DaysCounter
 		/// <summary>
 		/// Logger instance for logging messages and exceptions
 		/// </summary>
-		private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
+		private static readonly Logger logger = LogManager.GetCurrentClassLogger();
 
 		#region Helpers
 
@@ -26,11 +28,12 @@ namespace DaysCounter
 		/// <param name="e">The event data associated with the exception</param>
 		private static void HandleException(Exception ex, string message, object? sender = null, EventArgs? e = null)
 		{
-			string msg = $"Error: {ex}\nMessage: {ex.Message}\nStackTrace: {ex.StackTrace}\nSender: {sender}, EventArgs: {e}";
-			Debug.WriteLine(value: msg);
-			Console.WriteLine(value: msg);
-			Logger.Error(exception: ex, message: msg);
-			_ = MessageBox.Show(text: message, caption: @"Error", buttons: MessageBoxButtons.OK, icon: MessageBoxIcon.Error);
+			// Strukturierte Protokollierung; detaillierte Infos im Log
+			logger.Error(exception: ex, message: "Exception occurred. Sender: {Sender}, EventArgs: {EventArgs}", sender, e);
+			logger.Debug(message: "Exception details: {Exception}", argument: ex.ToString());
+
+			// Nur generische Meldung dem Benutzer zeigen (Details im Log)
+			_ = MessageBox.Show(text: message, caption: "Error", buttons: MessageBoxButtons.OK, icon: MessageBoxIcon.Error);
 		}
 
 		/// <summary>
@@ -54,12 +57,8 @@ namespace DaysCounter
 		/// </summary>
 		private void CountDaysFromDateToDate()
 		{
-			double days = (dateTimePickerBegin.Value - dateTimePickerEnd.Value).TotalDays;
-			if (days < 0)
-			{
-				days *= -1;
-			}
-			labelDaysCounted.Text = $@"They are {Math.Truncate(d: days)} days.";
+			double days = Math.Abs(value: (dateTimePickerBegin.Value - dateTimePickerEnd.Value).TotalDays);
+			labelDaysCounted.Text = $"They are {Math.Truncate(d: days)} days.";
 		}
 
 		/// <summary>
@@ -72,12 +71,8 @@ namespace DaysCounter
 		/// </summary>
 		private void CountDaysOfLife()
 		{
-			double daysOld = (DateTime.Now - dateTimePickerDateOfTheBirth.Value).TotalDays;
-			if (daysOld < 0)
-			{
-				daysOld *= -1;
-			}
-			labelDaysOld.Text = $@"You are {Math.Truncate(d: daysOld)} days old.";
+			double daysOld = Math.Abs(value: (DateTime.Now - dateTimePickerDateOfTheBirth.Value).TotalDays);
+			labelDaysOld.Text = $"You are {Math.Truncate(d: daysOld)} days old.";
 		}
 
 		/// <summary>
@@ -85,7 +80,7 @@ namespace DaysCounter
 		/// </summary>
 		private void CountDaysOfYear()
 		{
-			labelDaysOfYearPassed.Text = $@"It has been {dateTimePickerDaysOfYear.Value.DayOfYear} days since the start of this year.";
+			labelDaysOfYearPassed.Text = $"It has been {dateTimePickerDaysOfYear.Value.DayOfYear} days since the start of this year.";
 		}
 
 		/// <summary>
@@ -121,7 +116,7 @@ namespace DaysCounter
 			try
 			{
 				Clipboard.SetText(text: text);
-				_ = MessageBox.Show(text: @"Copied to clipboard", caption: @"Information", buttons: MessageBoxButtons.OK, icon: MessageBoxIcon.Information);
+				_ = MessageBox.Show(text: "Copied to clipboard", caption: "Information", buttons: MessageBoxButtons.OK, icon: MessageBoxIcon.Information);
 			}
 			catch (Exception ex)
 			{
@@ -135,19 +130,27 @@ namespace DaysCounter
 		/// <param name="dateTimePicker">The DateTimePicker to set the date to</param>
 		private static void CopyFromClipboard(DateTimePicker dateTimePicker)
 		{
-			string date = Clipboard.GetText();
-			if (string.IsNullOrEmpty(value: date))
+			try
 			{
-				_ = MessageBox.Show(text: @"The clipboard is empty.", caption: @"Information", buttons: MessageBoxButtons.OK, icon: MessageBoxIcon.Information);
-				return;
+				string date = Clipboard.GetText();
+				if (string.IsNullOrEmpty(value: date))
+				{
+					_ = MessageBox.Show(text: "The clipboard is empty.", caption: "Information", buttons: MessageBoxButtons.OK, icon: MessageBoxIcon.Information);
+					return;
+				}
+
+				if (DateTime.TryParse(s: date, result: out DateTime parsedDate))
+				{
+					dateTimePicker.Value = parsedDate;
+				}
+				else
+				{
+					_ = MessageBox.Show(text: "The clipboard does not contain a valid date.", caption: "Warning", buttons: MessageBoxButtons.OK, icon: MessageBoxIcon.Warning);
+				}
 			}
-			if (DateTime.TryParse(s: date, result: out DateTime parsedDate))
+			catch (Exception ex)
 			{
-				dateTimePicker.Value = parsedDate;
-			}
-			else
-			{
-				_ = MessageBox.Show(text: @"The clipboard does not contain a valid date.", caption: @"Warning", buttons: MessageBoxButtons.OK, icon: MessageBoxIcon.Warning);
+				HandleException(ex: ex, message: "An error occurred while reading from the clipboard.");
 			}
 		}
 
@@ -168,9 +171,9 @@ namespace DaysCounter
 			CountDaysFromDaySpan();
 			CountDaysOfLife();
 			CountDaysOfYear();
-			labelTitle.Text = $@"{AssemblyInfo.AssemblyProduct} {AssemblyInfo.AssemblyVersion}";
+			labelTitle.Text = $"{AssemblyInfo.AssemblyProduct} {AssemblyInfo.AssemblyVersion}";
 			labelDescription.Text = AssemblyInfo.AssemblyDescription;
-			labelCopyright.Text = $@"{AssemblyInfo.AssemblyCopyright}";
+			labelCopyright.Text = $"{AssemblyInfo.AssemblyCopyright}";
 		}
 
 		#endregion
