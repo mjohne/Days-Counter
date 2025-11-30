@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net9.0-windows7.0</TargetFramework>
+    <TargetFramework>net10.0-windows7.0</TargetFramework>
     <RootNamespace>DaysCounter</RootNamespace>
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
@@ -12,14 +12,14 @@
     <ApplicationIcon>Resources\logo.ico</ApplicationIcon>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
     <Title>Days Counter</Title>
-    <Version>1.6.2.14</Version>
+    <Version>1.6.3.15</Version>
     <Authors>Mijo Software</Authors>
     <Description>Counts the days between two dates</Description>
     <Copyright>2019-2025 Mijo Software</Copyright>
-    <PackageProjectUrl>https://mijo-software.de/programme/wissenschaft/days-counter/</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/mjohne/Days-Counter</PackageProjectUrl>
     <PackageIcon>logo.png</PackageIcon>
     <PackageReadmeFile>README.md</PackageReadmeFile>
-    <RepositoryUrl>https://github.com/Mijo-Software/Days-Counter.git</RepositoryUrl>
+    <RepositoryUrl>https://github.com/mjohne/Days-Counter.git</RepositoryUrl>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
     <EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
@@ -80,7 +80,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="NLog" Version="5.5.0" />
+    <PackageReference Include="NLog" Version="6.0.6" />
   </ItemGroup>
 
   <ItemGroup>
