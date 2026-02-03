@@ -1,2 +1,2 @@
 # Days-Counter
-A utility for counting days between two dates.
+A simple application that counts the number of days between two dates, or tracks the number of days since a specific event.
