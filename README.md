@@ -1,2 +1,2 @@
 # Days-Counter
-Counts days between two dates
+A utility for counting days between two dates.
