@@ -57,8 +57,8 @@ namespace DaysCounter
 		/// </summary>
 		private void CountDaysFromDateToDate()
 		{
-			double days = Math.Abs(value: (dateTimePickerBegin.Value - dateTimePickerEnd.Value).TotalDays);
-			labelDaysCounted.Text = $"They are {Math.Truncate(d: days)} days.";
+			double days = Math.Abs(value: (dateTimePickerBegin.Value.Date - dateTimePickerEnd.Value.Date).TotalDays);
+			labelDaysCounted.Text = $"Difference: {days:N0} days.";
 		}
 
 		/// <summary>
@@ -71,8 +71,8 @@ namespace DaysCounter
 		/// </summary>
 		private void CountDaysOfLife()
 		{
-			double daysOld = Math.Abs(value: (DateTime.Now - dateTimePickerDateOfTheBirth.Value).TotalDays);
-			labelDaysOld.Text = $"You are {Math.Truncate(d: daysOld)} days old.";
+			double daysOld = Math.Abs(value: (DateTime.Today - dateTimePickerDateOfTheBirth.Value.Date).TotalDays);
+			labelDaysOld.Text = $"You are {daysOld:N0} days old.";
 		}
 
 		/// <summary>
