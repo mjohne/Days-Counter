@@ -12,7 +12,7 @@ namespace DaysCounter
 		/// <summary>
 		/// Logger instance for logging messages and exceptions.
 		/// </summary>
-		private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
+		private static readonly Logger logger = LogManager.GetCurrentClassLogger();
 
 		/// <summary>
 		/// The main entry point for the application.
@@ -24,10 +24,10 @@ namespace DaysCounter
 			ApplicationConfiguration.Initialize();
 			RegisterGlobalExceptionHandlers();
 
-			Logger.Info(message: "Application started.");
+			logger.Info(message: "Application started.");
 
 			using MainForm mainForm = new();
-			Application.Run(mainForm);
+			Application.Run(mainForm: mainForm);
 		}
 
 		/// <summary>
@@ -36,18 +36,10 @@ namespace DaysCounter
 		private static void RegisterGlobalExceptionHandlers()
 		{
 			// Handle UI thread exceptions
-			Application.ThreadException += static (sender, e) =>
-			{
-				HandleException(ex: e.Exception, userMessage: "An invalid operation occurred. Please try again.");
-			};
+			Application.ThreadException += static (sender, e) => HandleException(ex: e.Exception, userMessage: "An invalid operation occurred. Please try again.");
 
 			// Handle non-UI thread exceptions
-			AppDomain.CurrentDomain.UnhandledException += static (sender, e) =>
-			{
-				Exception ex = e.ExceptionObject as Exception ?? new Exception("Unhandled non-exception object");
-				HandleException(ex: ex, userMessage: "An unexpected error occurred. Please contact support.");
-			};
-
+			AppDomain.CurrentDomain.UnhandledException += static (sender, e) => HandleException(ex: e.ExceptionObject as Exception ?? new Exception(message: "Unhandled non-exception object"), userMessage: "An unexpected error occurred. Please contact support.");
 			// Handle unobserved task exceptions
 			TaskScheduler.UnobservedTaskException += static (sender, e) =>
 			{
@@ -66,7 +58,7 @@ namespace DaysCounter
 			try
 			{
 				// Log structured and complete
-				Logger.Error(exception: ex, message: userMessage);
+				logger.Error(exception: ex, message: userMessage);
 				LogError(ex: ex);
 
 				// Inform user with a generic message
@@ -93,7 +85,7 @@ namespace DaysCounter
 		private static void LogError(Exception ex)
 		{
 			// Structured log message; avoid Console.WriteLine in production code.
-			Logger.Error(exception: ex, message: "Error: {Message}\nStackTrace: {StackTrace}", ex.Message, ex.StackTrace);
+			logger.Error(exception: ex, message: "Error: {Message}\nStackTrace: {StackTrace}", args: (ex.Message, ex.StackTrace));
 		}
 
 		/// <summary>

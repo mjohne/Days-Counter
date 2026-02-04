@@ -626,7 +626,7 @@ namespace DaysCounter
 			textBoxLicense.PlaceholderText = "license here... 😉";
 			textBoxLicense.ReadOnly = true;
 			textBoxLicense.ScrollBars = ScrollBars.Both;
-			textBoxLicense.Size = new Size(417, 96);
+			textBoxLicense.Size = new Size(417, 71);
 			textBoxLicense.TabIndex = 0;
 			textBoxLicense.Text = resources.GetString("textBoxLicense.Text");
 			toolTip.SetToolTip(textBoxLicense, "License");
@@ -674,7 +674,7 @@ namespace DaysCounter
 			tabControl.Name = "tabControl";
 			tabControl.SelectedIndex = 0;
 			tabControl.ShowToolTips = true;
-			tabControl.Size = new Size(425, 119);
+			tabControl.Size = new Size(425, 144);
 			tabControl.TabIndex = 0;
 			toolTip.SetToolTip(tabControl, "Shows the tabs");
 			tabControl.Enter += SetStatusBar_Enter;
@@ -702,7 +702,7 @@ namespace DaysCounter
 			tabPageDateToDate.Margin = new Padding(4, 3, 4, 3);
 			tabPageDateToDate.Name = "tabPageDateToDate";
 			tabPageDateToDate.Padding = new Padding(4, 3, 4, 3);
-			tabPageDateToDate.Size = new Size(417, 71);
+			tabPageDateToDate.Size = new Size(417, 96);
 			tabPageDateToDate.TabIndex = 0;
 			tabPageDateToDate.Text = "From date to date";
 			toolTip.SetToolTip(tabPageDateToDate, "Shows the tab page \"From date to date\"");
@@ -1047,7 +1047,7 @@ namespace DaysCounter
 			tabPageAbout.Margin = new Padding(4, 3, 4, 3);
 			tabPageAbout.Name = "tabPageAbout";
 			tabPageAbout.Padding = new Padding(4, 3, 4, 3);
-			tabPageAbout.Size = new Size(417, 96);
+			tabPageAbout.Size = new Size(417, 71);
 			tabPageAbout.TabIndex = 2;
 			tabPageAbout.Text = "About";
 			toolTip.SetToolTip(tabPageAbout, "Shows the tab page \"About\"");
@@ -1081,7 +1081,7 @@ namespace DaysCounter
 			tabPageLicense.ImageKey = "script-text.png";
 			tabPageLicense.Location = new Point(4, 44);
 			tabPageLicense.Name = "tabPageLicense";
-			tabPageLicense.Size = new Size(417, 96);
+			tabPageLicense.Size = new Size(417, 71);
 			tabPageLicense.TabIndex = 4;
 			tabPageLicense.Text = "License";
 			toolTip.SetToolTip(tabPageLicense, "Shows the tab page \"License\"");
@@ -1167,7 +1167,7 @@ namespace DaysCounter
 			toolStripContainer.ContentPanel.AutoScroll = true;
 			toolStripContainer.ContentPanel.Controls.Add(tabControl);
 			toolStripContainer.ContentPanel.Margin = new Padding(4, 3, 4, 3);
-			toolStripContainer.ContentPanel.Size = new Size(425, 119);
+			toolStripContainer.ContentPanel.Size = new Size(425, 144);
 			toolStripContainer.Dock = DockStyle.Fill;
 			// 
 			// toolStripContainer.LeftToolStripPanel
@@ -1193,6 +1193,7 @@ namespace DaysCounter
 			toolStripContainer.TopToolStripPanel.AccessibleDescription = "Upper part of the ToolStripContainer";
 			toolStripContainer.TopToolStripPanel.AccessibleName = "Upper part of the ToolStripContainer";
 			toolStripContainer.TopToolStripPanel.AccessibleRole = AccessibleRole.Pane;
+			toolStripContainer.TopToolStripPanelVisible = false;
 			// 
 			// MainForm
 			// 
