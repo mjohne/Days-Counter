@@ -96,6 +96,17 @@ namespace DaysCounter.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        internal static Bitmap disk {
+            get {
+                object obj = ResourceManager.GetObject("disk", resourceCulture);
+                return ((Bitmap)(obj));
+            }
+        }
+
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Stay not on top ähnelt.
         /// </summary>
         internal static string stayNotOnTop {
