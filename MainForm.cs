@@ -162,6 +162,26 @@ public partial class MainForm : Form
 		toolStripSplitButtonStayOnTop.Text = TopMost ? Resources.stayOnTop : Resources.stayNotOnTop;
 	}
 
+	/// <summary>
+	/// Opens a file with the default application.
+	/// </summary>
+	/// <param name="filePath">The path to the file to open.</param>
+	private static void OpenFile(string filePath)
+	{
+		// Use ProcessStartInfo to open the file with the default associated application
+		try
+		{
+			// UseShellExecute must be true to use the default application
+			using Process? _ = Process.Start(startInfo: new ProcessStartInfo(fileName: filePath) { UseShellExecute = true });
+		}
+		// Catch any exceptions that may occur during the process start
+		catch (Exception ex)
+		{
+			// Log the exception and show a user-friendly message
+			HandleException(ex: ex, message: "The file could not be opened automatically.");
+		}
+	}
+
 	#endregion
 
 	#region Clipboard Operations
@@ -434,6 +454,53 @@ public partial class MainForm : Form
 		if (e.KeyCode == Keys.Escape)
 		{
 			Close();
+		}
+	}
+
+	/// <summary>
+	/// Handles the click event of the "Export to Calendar" button.
+	/// </summary>
+	/// <param name="sender">sender object</param>
+	/// <param name="e">event arguments</param>
+	private void ButtonExportToCalendar_Click(object sender, EventArgs e)
+	{
+		// 1. Collect data
+		// We take the calculated date from the "Date with Span" tab.
+		DateTime targetDate = dateTimePickerDateOut.Value;
+		// Generate title (can later be entered via a TextBox)
+		string title = $"DaysCounter: Event after {numericUpDownDays.Value} days";
+		string description = $"Calculated from {dateTimePickerDateIn.Value:d} plus {numericUpDownDays.Value} days.";
+		// 2. Open the save dialog.
+		using SaveFileDialog saveFileDialog = new();
+		saveFileDialog.Filter = "iCalendar File (*.ics)|*.ics";
+		saveFileDialog.Title = "Save calendar entry";
+		saveFileDialog.FileName = "event.ics";
+		// Show the dialog and process the result
+		if (saveFileDialog.ShowDialog() == DialogResult.OK)
+		{
+			try
+			{
+				// 3. Call export
+				CalendarExporter.CreateIcsFile(title: title, date: targetDate, description: description, filePath: saveFileDialog.FileName);
+				// 4. Success message & option to open
+				DialogResult result = MessageBox.Show(
+					text: "File successfully exported.\nDo you want to open it directly (in Outlook/Calendar)?",
+					caption: "Export successful",
+					buttons: MessageBoxButtons.YesNo,
+					icon: MessageBoxIcon.Question);
+				// If the user chooses to open the file, attempt to do so
+				if (result == DialogResult.Yes)
+				{
+					// Try to open the file with the default app (e.g. Outlook)
+					OpenFile(filePath: saveFileDialog.FileName);
+				}
+			}
+			// Catch any exceptions that may occur during the export process
+			catch (Exception ex)
+			{
+				// Log the exception and show a user-friendly message
+				HandleException(ex: ex, message: "Error exporting calendar entry.");
+			}
 		}
 	}
 

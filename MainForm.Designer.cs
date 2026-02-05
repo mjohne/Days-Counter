@@ -69,6 +69,7 @@ namespace DaysCounter
 			buttonDateToDateCopyFromClipboard = new Button();
 			buttonDateToDateCopyToClipboard = new Button();
 			tabPageSpanOfDays = new TabPage();
+			buttonExportToCalendar = new Button();
 			buttonSpanOfDaysCopyFromClipboard = new Button();
 			buttonDaysOfSpanCopyToClipboard = new Button();
 			tabPageDaysOfLife = new TabPage();
@@ -205,7 +206,7 @@ namespace DaysCounter
 			labelTitle.AutoEllipsis = true;
 			labelTitle.AutoSize = true;
 			labelTitle.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Bold);
-			labelTitle.Location = new Point(55, 10);
+			labelTitle.Location = new Point(55, 3);
 			labelTitle.Margin = new Padding(4, 0, 4, 0);
 			labelTitle.Name = "labelTitle";
 			labelTitle.Size = new Size(165, 30);
@@ -224,11 +225,11 @@ namespace DaysCounter
 			labelDescription.AccessibleName = "Description";
 			labelDescription.AccessibleRole = AccessibleRole.StaticText;
 			labelDescription.AutoEllipsis = true;
-			labelDescription.AutoSize = true;
-			labelDescription.Location = new Point(55, 45);
+			labelDescription.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+			labelDescription.Location = new Point(55, 33);
 			labelDescription.Margin = new Padding(4, 0, 4, 0);
 			labelDescription.Name = "labelDescription";
-			labelDescription.Size = new Size(74, 21);
+			labelDescription.Size = new Size(353, 36);
 			labelDescription.TabIndex = 1;
 			labelDescription.Text = "[Description]";
 			toolTip.SetToolTip(labelDescription, "Description");
@@ -245,7 +246,8 @@ namespace DaysCounter
 			labelCopyright.AccessibleRole = AccessibleRole.StaticText;
 			labelCopyright.AutoEllipsis = true;
 			labelCopyright.AutoSize = true;
-			labelCopyright.Location = new Point(55, 65);
+			labelCopyright.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+			labelCopyright.Location = new Point(55, 72);
 			labelCopyright.Margin = new Padding(4, 0, 4, 0);
 			labelCopyright.Name = "labelCopyright";
 			labelCopyright.Size = new Size(133, 21);
@@ -302,7 +304,7 @@ namespace DaysCounter
 			dateTimePickerDateIn.Location = new Point(77, 7);
 			dateTimePickerDateIn.Margin = new Padding(4, 3, 4, 3);
 			dateTimePickerDateIn.Name = "dateTimePickerDateIn";
-			dateTimePickerDateIn.Size = new Size(231, 23);
+			dateTimePickerDateIn.Size = new Size(208, 23);
 			dateTimePickerDateIn.TabIndex = 1;
 			toolTip.SetToolTip(dateTimePickerDateIn, "Beginning date");
 			dateTimePickerDateIn.ValueChanged += DateTimePickerDateIn_ValueChanged;
@@ -322,7 +324,7 @@ namespace DaysCounter
 			numericUpDownDays.Minimum = new decimal(new int[] { 99999, 0, 0, int.MinValue });
 			numericUpDownDays.Name = "numericUpDownDays";
 			numericUpDownDays.Size = new Size(88, 23);
-			numericUpDownDays.TabIndex = 4;
+			numericUpDownDays.TabIndex = 5;
 			numericUpDownDays.TextAlign = HorizontalAlignment.Center;
 			toolTip.SetToolTip(numericUpDownDays, "Day span");
 			numericUpDownDays.ValueChanged += NumericUpDownDays_ValueChanged;
@@ -338,8 +340,8 @@ namespace DaysCounter
 			dateTimePickerDateOut.Location = new Point(77, 67);
 			dateTimePickerDateOut.Margin = new Padding(4, 3, 4, 3);
 			dateTimePickerDateOut.Name = "dateTimePickerDateOut";
-			dateTimePickerDateOut.Size = new Size(231, 23);
-			dateTimePickerDateOut.TabIndex = 6;
+			dateTimePickerDateOut.Size = new Size(208, 23);
+			dateTimePickerDateOut.TabIndex = 7;
 			toolTip.SetToolTip(dateTimePickerDateOut, "Ending date");
 			dateTimePickerDateOut.Enter += SetStatusBar_Enter;
 			dateTimePickerDateOut.Leave += ClearStatusBar_Leave;
@@ -376,7 +378,7 @@ namespace DaysCounter
 			labelDateOut.Margin = new Padding(4, 0, 4, 0);
 			labelDateOut.Name = "labelDateOut";
 			labelDateOut.Size = new Size(55, 15);
-			labelDateOut.TabIndex = 5;
+			labelDateOut.TabIndex = 6;
 			labelDateOut.Text = "Date &out:";
 			toolTip.SetToolTip(labelDateOut, "Description of the ending date");
 			labelDateOut.Enter += SetStatusBar_Enter;
@@ -579,7 +581,7 @@ namespace DaysCounter
 			buttonSwitchDateIn.AccessibleRole = AccessibleRole.PushButton;
 			buttonSwitchDateIn.AutoEllipsis = true;
 			buttonSwitchDateIn.Image = Resources.switch_small;
-			buttonSwitchDateIn.Location = new Point(316, 7);
+			buttonSwitchDateIn.Location = new Point(293, 7);
 			buttonSwitchDateIn.Margin = new Padding(4, 3, 4, 3);
 			buttonSwitchDateIn.Name = "buttonSwitchDateIn";
 			buttonSwitchDateIn.Size = new Size(23, 23);
@@ -626,7 +628,7 @@ namespace DaysCounter
 			textBoxLicense.PlaceholderText = "license here... 😉";
 			textBoxLicense.ReadOnly = true;
 			textBoxLicense.ScrollBars = ScrollBars.Both;
-			textBoxLicense.Size = new Size(417, 71);
+			textBoxLicense.Size = new Size(417, 96);
 			textBoxLicense.TabIndex = 0;
 			textBoxLicense.Text = resources.GetString("textBoxLicense.Text");
 			toolTip.SetToolTip(textBoxLicense, "License");
@@ -646,7 +648,7 @@ namespace DaysCounter
 			labelDaysPlusMinus.Margin = new Padding(4, 0, 4, 0);
 			labelDaysPlusMinus.Name = "labelDaysPlusMinus";
 			labelDaysPlusMinus.Size = new Size(64, 15);
-			labelDaysPlusMinus.TabIndex = 3;
+			labelDaysPlusMinus.TabIndex = 4;
 			labelDaysPlusMinus.Text = "&Days (-/+):";
 			toolTip.SetToolTip(labelDaysPlusMinus, "Description of the day span");
 			labelDaysPlusMinus.Enter += SetStatusBar_Enter;
@@ -756,6 +758,7 @@ namespace DaysCounter
 			tabPageSpanOfDays.AccessibleDescription = "Shows the tab page \"Span of days\"";
 			tabPageSpanOfDays.AccessibleName = "Tab page \"Span of days\"";
 			tabPageSpanOfDays.AccessibleRole = AccessibleRole.PageTab;
+			tabPageSpanOfDays.Controls.Add(buttonExportToCalendar);
 			tabPageSpanOfDays.Controls.Add(buttonSpanOfDaysCopyFromClipboard);
 			tabPageSpanOfDays.Controls.Add(buttonDaysOfSpanCopyToClipboard);
 			tabPageSpanOfDays.Controls.Add(labelDateOut);
@@ -770,7 +773,7 @@ namespace DaysCounter
 			tabPageSpanOfDays.Margin = new Padding(4, 3, 4, 3);
 			tabPageSpanOfDays.Name = "tabPageSpanOfDays";
 			tabPageSpanOfDays.Padding = new Padding(4, 3, 4, 3);
-			tabPageSpanOfDays.Size = new Size(417, 71);
+			tabPageSpanOfDays.Size = new Size(417, 96);
 			tabPageSpanOfDays.TabIndex = 1;
 			tabPageSpanOfDays.Text = "Span of days";
 			toolTip.SetToolTip(tabPageSpanOfDays, "Shows the tab page \"Span of days\"");
@@ -780,6 +783,26 @@ namespace DaysCounter
 			tabPageSpanOfDays.Leave += ClearStatusBar_Leave;
 			tabPageSpanOfDays.MouseEnter += SetStatusBar_Enter;
 			tabPageSpanOfDays.MouseLeave += ClearStatusBar_Leave;
+			// 
+			// buttonExportToCalendar
+			// 
+			buttonExportToCalendar.AccessibleDescription = "Exports the date into a ICS file";
+			buttonExportToCalendar.AccessibleName = "Export to ICS file";
+			buttonExportToCalendar.AccessibleRole = AccessibleRole.PushButton;
+			buttonExportToCalendar.Image = Resources.disk;
+			buttonExportToCalendar.Location = new Point(292, 64);
+			buttonExportToCalendar.Name = "buttonExportToCalendar";
+			buttonExportToCalendar.Size = new Size(85, 26);
+			buttonExportToCalendar.TabIndex = 8;
+			buttonExportToCalendar.Text = "To ICS file";
+			buttonExportToCalendar.TextAlign = ContentAlignment.MiddleRight;
+			buttonExportToCalendar.TextImageRelation = TextImageRelation.ImageBeforeText;
+			buttonExportToCalendar.UseVisualStyleBackColor = true;
+			buttonExportToCalendar.Click += ButtonExportToCalendar_Click;
+			buttonExportToCalendar.Enter += SetStatusBar_Enter;
+			buttonExportToCalendar.Leave += ClearStatusBar_Leave;
+			buttonExportToCalendar.MouseEnter += SetStatusBar_Enter;
+			buttonExportToCalendar.MouseLeave += ClearStatusBar_Leave;
 			// 
 			// buttonSpanOfDaysCopyFromClipboard
 			// 
@@ -792,7 +815,7 @@ namespace DaysCounter
 			buttonSpanOfDaysCopyFromClipboard.Margin = new Padding(4, 3, 4, 3);
 			buttonSpanOfDaysCopyFromClipboard.Name = "buttonSpanOfDaysCopyFromClipboard";
 			buttonSpanOfDaysCopyFromClipboard.Size = new Size(26, 26);
-			buttonSpanOfDaysCopyFromClipboard.TabIndex = 10;
+			buttonSpanOfDaysCopyFromClipboard.TabIndex = 3;
 			toolTip.SetToolTip(buttonSpanOfDaysCopyFromClipboard, "Copy the date from the clipboard to the calendar");
 			buttonSpanOfDaysCopyFromClipboard.UseVisualStyleBackColor = true;
 			buttonSpanOfDaysCopyFromClipboard.Click += ButtonSpanOfDaysCopyFromClipboard_Click;
@@ -832,7 +855,7 @@ namespace DaysCounter
 			tabPageDaysOfLife.Margin = new Padding(4, 3, 4, 3);
 			tabPageDaysOfLife.Name = "tabPageDaysOfLife";
 			tabPageDaysOfLife.Padding = new Padding(4, 3, 4, 3);
-			tabPageDaysOfLife.Size = new Size(417, 71);
+			tabPageDaysOfLife.Size = new Size(417, 96);
 			tabPageDaysOfLife.TabIndex = 3;
 			tabPageDaysOfLife.Text = "Days of life";
 			toolTip.SetToolTip(tabPageDaysOfLife, "Shows the tab page \"Days of life\"");
@@ -893,7 +916,7 @@ namespace DaysCounter
 			tabPageDaysOfYear.Location = new Point(4, 44);
 			tabPageDaysOfYear.Name = "tabPageDaysOfYear";
 			tabPageDaysOfYear.Padding = new Padding(3);
-			tabPageDaysOfYear.Size = new Size(417, 71);
+			tabPageDaysOfYear.Size = new Size(417, 96);
 			tabPageDaysOfYear.TabIndex = 5;
 			tabPageDaysOfYear.Text = "Days of year";
 			toolTip.SetToolTip(tabPageDaysOfYear, "Shows the tab page \"Days of year\"");
@@ -1047,7 +1070,7 @@ namespace DaysCounter
 			tabPageAbout.Margin = new Padding(4, 3, 4, 3);
 			tabPageAbout.Name = "tabPageAbout";
 			tabPageAbout.Padding = new Padding(4, 3, 4, 3);
-			tabPageAbout.Size = new Size(417, 71);
+			tabPageAbout.Size = new Size(417, 96);
 			tabPageAbout.TabIndex = 2;
 			tabPageAbout.Text = "About";
 			toolTip.SetToolTip(tabPageAbout, "Shows the tab page \"About\"");
@@ -1081,7 +1104,7 @@ namespace DaysCounter
 			tabPageLicense.ImageKey = "script-text.png";
 			tabPageLicense.Location = new Point(4, 44);
 			tabPageLicense.Name = "tabPageLicense";
-			tabPageLicense.Size = new Size(417, 71);
+			tabPageLicense.Size = new Size(417, 96);
 			tabPageLicense.TabIndex = 4;
 			tabPageLicense.Text = "License";
 			toolTip.SetToolTip(tabPageLicense, "Shows the tab page \"License\"");
@@ -1295,6 +1318,7 @@ namespace DaysCounter
 		private Button buttonSpanOfDaysCopyFromClipboard;
 		private Button buttonDaysOfLifeCopyFromClipboard;
 		private Button buttonDaysOfYearCopyFromClipboard;
+		private Button buttonExportToCalendar;
 	}
 }
 
