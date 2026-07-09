@@ -6,22 +6,16 @@ using System.Diagnostics;
 
 namespace DaysCounter;
 
-/// <summary>
-/// Show the main window of the application
-/// </summary>
+/// <summary>Shows the main window of the application</summary>
 [DebuggerDisplay(value: $"{{{nameof(GetDebuggerDisplay)}(),nq}}")]
 public partial class MainForm : Form
 {
-	/// <summary>
-	/// Logger instance for logging messages and exceptions
-	/// </summary>
+	/// <summary>Logger instance for logging messages and exceptions</summary>
 	private static readonly Logger logger = LogManager.GetCurrentClassLogger();
 
 	#region Constructor
 
-	/// <summary>
-	/// Constructor
-	/// </summary>
+	/// <summary>Constructor</summary>
 	public MainForm()
 	{
 		// Initialize the form
@@ -43,9 +37,7 @@ public partial class MainForm : Form
 
 	#region Calculation Logic
 
-	/// <summary>
-	/// Updates all calculations
-	/// </summary>
+	/// <summary>Updates all calculations</summary>
 	private void UpdateAllCalculations()
 	{
 		CalculateDaysFromDateToDate();
@@ -54,9 +46,7 @@ public partial class MainForm : Form
 		CalculateDaysOfYear();
 	}
 
-	/// <summary>
-	/// Calculate the days from a date to another date
-	/// </summary>
+	/// <summary>Calculates the days from a date to another date</summary>
 	private void CalculateDaysFromDateToDate()
 	{
 		// Get the start and end dates from the date pickers
@@ -68,9 +58,7 @@ public partial class MainForm : Form
 		labelDaysCounted.Text = $"Difference {days:N0} days.";
 	}
 
-	/// <summary>
-	/// Calculate the days from a date with a specific span in days
-	/// </summary>
+	/// <summary>Calculates the days from a date with a specific span in days</summary>
 	private void CalculateDateFromSpan()
 	{
 		// Get the start date and the number of days to add from the controls
@@ -82,9 +70,7 @@ public partial class MainForm : Form
 		dateTimePickerDateOut.Value = resultDate;
 	}
 
-	/// <summary>
-	/// Calculate the days from a date until today
-	/// </summary>
+	/// <summary>Calculates the days from a date until today</summary>
 	private void CalculateDaysOfLife()
 	{
 		// Get the birth date from the date picker
@@ -95,9 +81,7 @@ public partial class MainForm : Form
 		labelDaysOld.Text = $"You are {daysOld:N0} days old.";
 	}
 
-	/// <summary>
-	/// Calculate the days since the start of the year until today
-	/// </summary>
+	/// <summary>Calculates the days since the start of the year until today</summary>
 	private void CalculateDaysOfYear()
 	{
 		// Get the date from the date picker
@@ -112,9 +96,7 @@ public partial class MainForm : Form
 
 	#region Helpers
 
-	/// <summary>
-	/// Handles exceptions by logging the error and showing a message box
-	/// </summary>
+	/// <summary>Handles exceptions by logging the error and showing a message box</summary>
 	/// <param name="ex">The exception that occurred</param>
 	/// <param name="message">The message to log and display</param>
 	/// <param name="sender">The source of the event that caused the exception</param>
@@ -127,15 +109,12 @@ public partial class MainForm : Form
 		_ = MessageBox.Show(text: message, caption: "Error", buttons: MessageBoxButtons.OK, icon: MessageBoxIcon.Error);
 	}
 
-	/// <summary>
-	/// Get the debugger display
-	/// </summary>
-	/// <returns>debugger display</returns>
+	/// <summary>Gets the debugger display</summary>
+	/// <returns>The debugger display.</returns>
+
 	private string GetDebuggerDisplay() => ToString();
 
-	/// <summary>
-	/// Set a specific text to the status bar
-	/// </summary>
+	/// <param name="text">The text to display in the status bar.</param>
 	/// <param name="text">text with some information</param>
 	private void SetStatusBarText(string text)
 	{
@@ -144,14 +123,10 @@ public partial class MainForm : Form
 		labelInformation.Text = text;
 	}
 
-	/// <summary>
-	/// Clears the status bar
-	/// </summary>
+	/// <summary>Clears the status bar</summary>
 	private void ClearStatusBar() => SetStatusBarText(text: string.Empty);
 
-	/// <summary>
-	/// Toggle the "Always on Top" status of the application
-	/// </summary>
+	/// <summary>Toggles the "Always on Top" status of the application</summary>
 	private void ToggleTopMost()
 	{
 		TopMost = !TopMost;
@@ -162,9 +137,7 @@ public partial class MainForm : Form
 		toolStripSplitButtonStayOnTop.Text = TopMost ? Resources.stayOnTop : Resources.stayNotOnTop;
 	}
 
-	/// <summary>
-	/// Opens a file with the default application.
-	/// </summary>
+	/// <summary>Opens a file with the default application.</summary>
 	/// <param name="filePath">The path to the file to open.</param>
 	private static void OpenFile(string filePath)
 	{
@@ -186,9 +159,7 @@ public partial class MainForm : Form
 
 	#region Clipboard Operations
 
-	/// <summary>
-	/// Copies the specified text to the clipboard and displays a confirmation message
-	/// </summary>
+	/// <summary>Copies the specified text to the clipboard and displays a confirmation message</summary>
 	/// <param name="text">The text to be copied</param>
 	private static void CopyToClipboard(string text)
 	{
@@ -212,9 +183,7 @@ public partial class MainForm : Form
 		}
 	}
 
-	/// <summary>
-	/// Pastes the text from the clipboard into the specified DateTimePicker
-	/// </summary>
+	/// <summary>Pastes the text from the clipboard into the specified DateTimePicker</summary>
 	/// <param name="dateTimePicker">The DateTimePicker to paste the text into</param>
 	private static void PasteToDateTimePicker(DateTimePicker dateTimePicker)
 	{
@@ -255,158 +224,112 @@ public partial class MainForm : Form
 
 	#region Event Handlers: UI Interaction
 
-	/// <summary>
-	/// Handles the Click event of the button and toggles the ShowUpDown property of the dateTimePickerBegin control.
-	/// </summary>
+	/// <summary>Handles the Click event of the button and toggles the ShowUpDown property of the dateTimePickerBegin control.</summary>
 	/// <param name="sender">The source of the event, typically the button control that was clicked.</param>
 	/// <param name="e">An EventArgs object that contains the event data.</param>
 	private void ButtonSwitchDateBegin_Click(object sender, EventArgs e) => dateTimePickerBegin.ShowUpDown = !dateTimePickerBegin.ShowUpDown;
 
-	/// <summary>
-	/// Handles the Click event of the button and toggles the ShowUpDown property of the dateTimePickerEnd control.
-	/// </summary>
+	/// <summary>Handles the Click event of the button and toggles the ShowUpDown property of the dateTimePickerEnd control.</summary>
 	/// <param name="sender">The source of the event, typically the button control that was clicked.</param>
 	/// <param name="e">An EventArgs object that contains the event data.</param>
 	private void ButtonSwitchDateEnd_Click(object sender, EventArgs e) => dateTimePickerEnd.ShowUpDown = !dateTimePickerEnd.ShowUpDown;
 
-	/// <summary>
-	/// Handles the Click event of the button and toggles the ShowUpDown property of the dateTimePickerDateIn control.
-	/// </summary>
+	/// <summary>Handles the Click event of the button and toggles the ShowUpDown property of the dateTimePickerDateIn control.</summary>
 	/// <param name="sender">The source of the event, typically the button control that was clicked.</param>
 	/// <param name="e">An EventArgs object that contains the event data.</param>
 	private void ButtonSwitchDateDays_Click(object sender, EventArgs e) => dateTimePickerDateIn.ShowUpDown = !dateTimePickerDateIn.ShowUpDown;
 
-	/// <summary>
-	/// Handles the Click event of the button and toggles the ShowUpDown property of the dateTimePickerDateOfTheBirth control.
-	/// </summary>
+	/// <summary>Handles the Click event of the button and toggles the ShowUpDown property of the dateTimePickerDateOfTheBirth control.</summary>
 	/// <param name="sender">The source of the event, typically the button control that was clicked.</param>
 	/// <param name="e">An EventArgs object that contains the event data.</param>
 	private void ButtonDateOfTheBirth_Click(object sender, EventArgs e) => dateTimePickerDateOfTheBirth.ShowUpDown = !dateTimePickerDateOfTheBirth.ShowUpDown;
 
-	/// <summary>
-	/// Handles the Click event of the button and toggles the ShowUpDown property of the dateTimePickerDaysOfYear control.
-	/// </summary>
+	/// <summary>Handles the Click event of the button and toggles the ShowUpDown property of the dateTimePickerDaysOfYear control.</summary>
 	/// <param name="sender">The source of the event, typically the button control that was clicked.</param>
 	/// <param name="e">An EventArgs object that contains the event data.</param>
 	private void ButtonDaysOfYear_Click(object sender, EventArgs e) => dateTimePickerDaysOfYear.ShowUpDown = !dateTimePickerDaysOfYear.ShowUpDown;
 
-	/// <summary>
-	/// Handles the Click event of the menu item and toggles the TopMost property of the form.
-	/// </summary>
+	/// <summary>Handles the Click event of the menu item and toggles the TopMost property of the form.</summary>
 	/// <param name="sender">The source of the event, typically the menu item that was clicked.</param>
 	/// <param name="e">An EventArgs object that contains the event data.</param>
 	private void ToolStripMenuItemStayNotOnTop_Click(object sender, EventArgs e) => ToggleTopMost();
 
-	/// <summary>
-	/// Handles the Click event of the menu item and toggles the TopMost property of the form.
-	/// </summary>
+	/// <summary>Handles the Click event of the menu item and toggles the TopMost property of the form.</summary>
 	/// <param name="sender">The source of the event, typically the menu item that was clicked.</param>
 	/// <param name="e">An EventArgs object that contains the event data.</param>
 	private void ToolStripMenuItemStayOnTop_Click(object sender, EventArgs e) => ToggleTopMost();
 
-	/// <summary>
-	/// Handles the Click event of the split button and toggles the TopMost property of the form.
-	/// </summary>
+	/// <summary>Handles the Click event of the split button and toggles the TopMost property of the form.</summary>
 	/// <param name="sender">The source of the event, typically the split button that was clicked.</param>
 	/// <param name="e">An EventArgs object that contains the event data.</param>
 	private void ToolStripSplitButtonStayOnTop_ButtonClick(object sender, EventArgs e) => ToggleTopMost();
 
-	/// <summary>
-	/// Handles the Click event of the button and copies the date to the clipboard.
-	/// </summary>
+	/// <summary>Handles the Click event of the button and copies the date to the clipboard.</summary>
 	/// <param name="sender">The source of the event, typically the button control that was clicked.</param>
 	/// <param name="e">An EventArgs object that contains the event data.</param>
 	private void ButtonDateToDateCopyToClipboard_Click(object sender, EventArgs e) => CopyToClipboard(text: labelDaysCounted.Text);
 
-	/// <summary>
-	/// Handles the Click event of the button and copies the date to the clipboard.
-	/// </summary>
+	/// <summary>Handles the Click event of the button and copies the date to the clipboard.</summary>
 	/// <param name="sender">The source of the event, typically the button control that was clicked.</param>
 	/// <param name="e">An EventArgs object that contains the event data.</param>
 	private void ButtonDaysOfSpanCopyToClipboard_Click(object sender, EventArgs e) => CopyToClipboard(text: dateTimePickerDateOut.Value.ToShortDateString());
 
-	/// <summary>
-	/// Handles the Click event of the button and copies the date to the clipboard.
-	/// </summary>
+	/// <summary>Handles the Click event of the button and copies the date to the clipboard.</summary>
 	/// <param name="sender">The source of the event, typically the button control that was clicked.</param>
 	/// <param name="e">An EventArgs object that contains the event data.</param>
 	private void ButtonDaysOfLifeCopyToClipboard_Click(object sender, EventArgs e) => CopyToClipboard(text: labelDaysOld.Text);
 
-	/// <summary>
-	/// Handles the Click event of the button and copies the date to the clipboard.
-	/// </summary>
+	/// <summary>Handles the Click event of the button and copies the date to the clipboard.</summary>
 	/// <param name="sender">The source of the event, typically the button control that was clicked.</param>
 	/// <param name="e">An EventArgs object that contains the event data.</param>
 	private void ButtonDaysOfYearCopyToClipboard_Click(object sender, EventArgs e) => CopyToClipboard(text: labelDaysOfYearPassed.Text);
 
-	/// <summary>
-	/// Handles the Click event of the button and pastes the clipboard content into the specified DateTimePicker control.
-	/// </summary>
+	/// <summary>Handles the Click event of the button and pastes the clipboard content into the specified DateTimePicker control.</summary>
 	/// <param name="sender">The source of the event, typically the button control that was clicked.</param>
 	/// <param name="e">An EventArgs object that contains the event data.</param>
 	private void ButtonDateToDateCopyFromClipboard_Click(object sender, EventArgs e) => PasteToDateTimePicker(dateTimePicker: dateTimePickerBegin);
 
-	/// <summary>
-	/// Handles the Click event of the button and pastes the clipboard content into the specified DateTimePicker control.
-	/// </summary>
+	/// <summary>Handles the Click event of the button and pastes the clipboard content into the specified DateTimePicker control.</summary>
 	/// <param name="sender">The source of the event, typically the button control that was clicked.</param>
 	/// <param name="e">An EventArgs object that contains the event data.</param>
 	private void ButtonSpanOfDaysCopyFromClipboard_Click(object sender, EventArgs e) => PasteToDateTimePicker(dateTimePicker: dateTimePickerDateIn);
 
-	/// <summary>
-	/// Handles the Click event of the button and pastes the clipboard content into the specified DateTimePicker control.
-	/// </summary>
+	/// <summary>Handles the Click event of the button and pastes the clipboard content into the specified DateTimePicker control.</summary>
 	/// <param name="sender">The source of the event, typically the button control that was clicked.</param>
 	/// <param name="e">An EventArgs object that contains the event data.</param>
 	private void ButtonDaysOfLifeCopyFromClipboard_Click(object sender, EventArgs e) => PasteToDateTimePicker(dateTimePicker: dateTimePickerDateOfTheBirth);
 
-	/// <summary>
-	/// Handles the Click event of the button and pastes the clipboard content into the specified DateTimePicker control.
-	/// </summary>
+	/// <summary>Handles the Click event of the button and pastes the clipboard content into the specified DateTimePicker control.</summary>
 	/// <param name="sender">The source of the event, typically the button control that was clicked.</param>
 	/// <param name="e">An EventArgs object that contains the event data.</param>
 	private void ButtonDaysOfYearCopyFromClipboard_Click(object sender, EventArgs e) => PasteToDateTimePicker(dateTimePicker: dateTimePickerDaysOfYear);
 
-	/// <summary>
-	/// Handles the ValueChanged event of the begin date picker control and updates the calculated date range accordingly.
-	/// </summary>
+	/// <summary>Handles the ValueChanged event of the begin date picker control and updates the calculated date range accordingly.</summary>
 	/// <param name="sender">The source of the event, typically the begin date picker control.</param>
 	/// <param name="e">An EventArgs object that contains the event data.</param>
 	private void DateTimePickerBegin_ValueChanged(object sender, EventArgs e) => CalculateDaysFromDateToDate();
 
-	/// <summary>
-	/// Handles the ValueChanged event of the end date picker control and updates the calculated date accordingly.
-	/// </summary>
+	/// <summary>Handles the ValueChanged event of the end date picker control and updates the calculated date accordingly.</summary>
 	/// <param name="sender">The source of the event, typically the date picker control whose value has changed.</param>
 	/// <param name="e">An EventArgs object that contains the event data.</param>
 	private void DateTimePickerEnd_ValueChanged(object sender, EventArgs e) => CalculateDaysFromDateToDate();
 
-	/// <summary>
-	/// Handles the ValueChanged event of the date-in date picker control and updates the calculated date accordingly.
-	/// </summary>
+	/// <summary>Handles the ValueChanged event of the date-in date picker control and updates the calculated date accordingly.</summary>
 	/// <param name="sender">The source of the event, typically the date picker control whose value has changed.</param>
 	/// <param name="e">An EventArgs object that contains the event data.</param>
 	private void DateTimePickerDateIn_ValueChanged(object sender, EventArgs e) => CalculateDateFromSpan();
 
-	/// <summary>
-	/// Handles the ValueChanged event of the numeric up-down control and updates the calculated date accordingly.
-	/// </summary>
+	/// <summary>Handles the ValueChanged event of the numeric up-down control and updates the calculated date accordingly.</summary>
 	/// <param name="sender">The source of the event, typically the numeric up-down control whose value has changed.</param>
 	/// <param name="e">An EventArgs object that contains the event data.</param>
 	private void NumericUpDownDays_ValueChanged(object sender, EventArgs e) => CalculateDateFromSpan();
 
-	/// <summary>
-	/// Handles the ValueChanged event of the date-of-birth date picker control and updates the calculated number of days
-	/// accordingly.
-	/// </summary>
+	/// <summary>Handles the ValueChanged event of the date-of-birth date picker control and updates the calculated number of days accordingly.</summary>
 	/// <param name="sender">The source of the event, typically the date picker control whose value has changed.</param>
 	/// <param name="e">An EventArgs object that contains the event data.</param>
 	private void DateTimePickerDateOfTheBirth_ValueChanged(object sender, EventArgs e) => CalculateDaysOfLife();
 
-	/// <summary>
-	/// Handles the ValueChanged event of the days-of-year date picker control and updates the calculated number of days
-	/// accordingly.
-	/// </summary>
+	/// <summary>Handles the ValueChanged event of the days-of-year date picker control and updates the calculated number of days accordingly.</summary>
 	/// <param name="sender">The source of the event, typically the date picker control whose value has changed.</param>
 	/// <param name="e">An EventArgs object that contains the event data.</param>
 	private void DateTimePickerDaysOfYear_ValueChanged(object sender, EventArgs e) => CalculateDaysOfYear();
@@ -415,9 +338,7 @@ public partial class MainForm : Form
 
 	#region Event Handlers: General
 
-	/// <summary>
-	/// Sets the status bar text when the control is entered.
-	/// </summary>
+	/// <summary>Sets the status bar text when the control is entered.</summary>
 	/// <param name="sender">sender object</param>
 	/// <param name="e">event arguments</param>
 	private void SetStatusBar_Enter(object sender, EventArgs e)
@@ -436,16 +357,12 @@ public partial class MainForm : Form
 		}
 	}
 
-	/// <summary>
-	/// Clears the status bar text when the control is left.
-	/// </summary>
+	/// <summary>Clears the status bar text when the control is left.</summary>
 	/// <param name="sender">sender object</param>
 	/// <param name="e">event arguments</param>
 	private void ClearStatusBar_Leave(object? sender, EventArgs? e) => ClearStatusBar();
 
-	/// <summary>
-	/// Handles the key down event for the main form.
-	/// </summary>
+	/// <summary>Handles the key down event for the main form.</summary>
 	/// <param name="sender">sender object</param>
 	/// <param name="e">event arguments</param>
 	private void MainForm_KeyDown(object? sender, KeyEventArgs e)
@@ -457,9 +374,7 @@ public partial class MainForm : Form
 		}
 	}
 
-	/// <summary>
-	/// Handles the click event of the "Export to Calendar" button.
-	/// </summary>
+	/// <summary>Handles the click event of the "Export to Calendar" button.</summary>
 	/// <param name="sender">sender object</param>
 	/// <param name="e">event arguments</param>
 	private void ButtonExportToCalendar_Click(object sender, EventArgs e)
