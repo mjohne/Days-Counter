@@ -4,18 +4,14 @@ using System.Reflection;
 
 namespace DaysCounter;
 
-/// <summary>
-/// Provide some assembly information
-/// </summary>
+/// <summary>Provide some assembly information</summary>
 public static class AssemblyInfo
 {
 	private static readonly Logger logger = LogManager.GetCurrentClassLogger();
 
 	#region Assembly attribute accessors
 
-	/// <summary>
-	/// Return the title of the assembly
-	/// </summary>
+	/// <summary>Return the title of the assembly</summary>
 	public static string AssemblyTitle
 	{
 		get
@@ -36,9 +32,7 @@ public static class AssemblyInfo
 		}
 	}
 
-	/// <summary>
-	/// Return the version of the assembly
-	/// </summary>
+	/// <summary>Return the version of the assembly</summary>
 	public static string AssemblyVersion
 	{
 		get
@@ -55,9 +49,7 @@ public static class AssemblyInfo
 		}
 	}
 
-	/// <summary>
-	/// Return the description of the assembly
-	/// </summary>
+	/// <summary>Return the description of the assembly</summary>
 	public static string AssemblyDescription
 	{
 		get
@@ -75,9 +67,7 @@ public static class AssemblyInfo
 		}
 	}
 
-	/// <summary>
-	/// Return the product name of the assembly
-	/// </summary>
+	/// <summary>Return the product name of the assembly</summary>
 	public static string AssemblyProduct
 	{
 		get
@@ -95,9 +85,7 @@ public static class AssemblyInfo
 		}
 	}
 
-	/// <summary>
-	/// Return the copyright of the assembly
-	/// </summary>
+	/// <summary>Return the copyright of the assembly</summary>
 	public static string AssemblyCopyright
 	{
 		get
@@ -115,9 +103,7 @@ public static class AssemblyInfo
 		}
 	}
 
-	/// <summary>
-	/// Return the company name of the assembly
-	/// </summary>
+	/// <summary>Return the company name of the assembly</summary>
 	public static string AssemblyCompany
 	{
 		get
