@@ -4,19 +4,13 @@ using System.Diagnostics;
 
 namespace DaysCounter;
 
-/// <summary>
-/// Main class of the program.
-/// </summary>
+/// <summary>Main class of the program.</summary>
 internal static class Program
 {
-	/// <summary>
-	/// Logger instance for logging messages and exceptions.
-	/// </summary>
+	/// <summary>Logger instance for logging messages and exceptions.</summary>
 	private static readonly Logger logger = LogManager.GetCurrentClassLogger();
 
-	/// <summary>
-	/// The main entry point for the application.
-	/// </summary>
+	/// <summary>The main entry point for the application.</summary>
 	[STAThread]
 	private static void Main()
 	{
@@ -30,9 +24,7 @@ internal static class Program
 		Application.Run(mainForm: mainForm);
 	}
 
-	/// <summary>
-	/// Registers central exception handlers for UI, AppDomain, and Task errors.
-	/// </summary>
+	/// <summary>Registers central exception handlers for UI, AppDomain, and Task errors.</summary>
 	private static void RegisterGlobalExceptionHandlers()
 	{
 		// Handle UI thread exceptions
@@ -48,9 +40,7 @@ internal static class Program
 		};
 	}
 
-	/// <summary>
-	/// Centralized logging, user communication, and optional telemetry.
-	/// </summary>
+	/// <summary>Centralized logging, user communication, and optional telemetry.</summary>
 	/// <param name="ex">The exception.</param>
 	/// <param name="userMessage">The generic message for the user.</param>
 	private static void HandleException(Exception ex, string userMessage)
@@ -78,9 +68,7 @@ internal static class Program
 		}
 	}
 
-	/// <summary>
-	/// Logs error details
-	/// </summary>
+	/// <summary>Logs error details</summary>
 	/// <param name="ex">The exception.</param>
 	private static void LogError(Exception ex)
 	{
@@ -88,9 +76,7 @@ internal static class Program
 		logger.Error(exception: ex, message: "Error: {Message}\nStackTrace: {StackTrace}", args: (ex.Message, ex.StackTrace));
 	}
 
-	/// <summary>
-	/// Shows a generic error message in the UI, safely on the UI thread.
-	/// </summary>
+	/// <summary>Shows a generic error message in the UI, safely on the UI thread.</summary>
 	/// <param name="message">The message to display.</param>
 	private static void ShowErrorMessage(string message)
 	{
