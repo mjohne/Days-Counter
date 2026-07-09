@@ -110,7 +110,7 @@ public partial class MainForm : Form
 	}
 
 	/// <summary>Gets the debugger display</summary>
-	/// <returns>debugger display</returns>
+	/// <returns>The debugger display.</returns>
 	private string GetDebuggerDisplay() => ToString();
 
 	/// <summary>Sets a specific text to the status bar</summary>
