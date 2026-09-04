@@ -1150,7 +1150,7 @@ namespace DaysCounter
 			//
 			// buttonSwitchDateCalculationStart
 			//
-			buttonSwitchDateCalculationStart.AccessibleDescription = "Switchs the input method of the start date";
+			buttonSwitchDateCalculationStart.AccessibleDescription = "Switches the input method of the start date";
 			buttonSwitchDateCalculationStart.AccessibleName = "Changes the input method of the start date";
 			buttonSwitchDateCalculationStart.AccessibleRole = AccessibleRole.PushButton;
 			buttonSwitchDateCalculationStart.AutoEllipsis = true;
@@ -1359,6 +1359,7 @@ namespace DaysCounter
 			buttonDateCalculationCopyFromClipboard.AccessibleName = "Copy from clipboard";
 			buttonDateCalculationCopyFromClipboard.AccessibleRole = AccessibleRole.PushButton;
 			buttonDateCalculationCopyFromClipboard.AutoEllipsis = true;
+			buttonDateCalculationCopyFromClipboard.Image = (Image)resources.GetObject("buttonDateToDateCopyFromClipboard.Image");
 			buttonDateCalculationCopyFromClipboard.Location = new Point(383, 7);
 			buttonDateCalculationCopyFromClipboard.Margin = new Padding(4, 3, 4, 3);
 			buttonDateCalculationCopyFromClipboard.Name = "buttonDateCalculationCopyFromClipboard";
@@ -1377,6 +1378,7 @@ namespace DaysCounter
 			buttonDateCalculationCopyToClipboard.AccessibleDescription = "Copies the calculated date to clipboard";
 			buttonDateCalculationCopyToClipboard.AccessibleName = "Copy to clipboard";
 			buttonDateCalculationCopyToClipboard.AccessibleRole = AccessibleRole.PushButton;
+			buttonDateCalculationCopyToClipboard.Image = (Image)resources.GetObject("buttonDateToDateCopyToClipboard.Image");
 			buttonDateCalculationCopyToClipboard.Location = new Point(383, 64);
 			buttonDateCalculationCopyToClipboard.Margin = new Padding(4, 3, 4, 3);
 			buttonDateCalculationCopyToClipboard.Name = "buttonDateCalculationCopyToClipboard";
@@ -1676,4 +1678,3 @@ namespace DaysCounter
 		private Button buttonDateCalculationCopyFromClipboard;
 	}
 }
-

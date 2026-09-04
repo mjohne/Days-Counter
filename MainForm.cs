@@ -102,15 +102,38 @@ public partial class MainForm : Form
 		int months = (int)numericUpDownMonths.Value;
 		int days = (int)numericUpDownDaysCalculation.Value;
 		bool isFuture = radioButtonFuture.Checked;
-		// Calculate the resulting date using the DateCalculator class
-		DateTime resultDate = DateCalculator.CalculateDateFromYearsMonthsDays(start: start, years: years, months: months, days: days, isFuture: isFuture);
-		// Update the date picker to show the resulting date
-		dateTimePickerCalculationResult.Value = resultDate;
+		try
+		{
+			// Calculate the resulting date using the DateCalculator class
+			DateTime resultDate = DateCalculator.CalculateDateFromYearsMonthsDays(start: start, years: years, months: months, days: days, isFuture: isFuture);
+			// Update the date picker to show the resulting date
+			dateTimePickerCalculationResult.Value = ClampDate(value: resultDate, minDate: dateTimePickerCalculationResult.MinDate, maxDate: dateTimePickerCalculationResult.MaxDate);
+		}
+		catch (ArgumentOutOfRangeException ex)
+		{
+			logger.Warn(exception: ex, message: "Date calculation exceeded the supported DateTimePicker range.");
+			dateTimePickerCalculationResult.Value = isFuture ? dateTimePickerCalculationResult.MaxDate : dateTimePickerCalculationResult.MinDate;
+		}
 	}
 
 	#endregion
 
 	#region Helpers
+
+	/// <summary>Clamps a date to a supported range.</summary>
+	/// <param name="value">The date to clamp.</param>
+	/// <param name="minDate">The minimum allowed date.</param>
+	/// <param name="maxDate">The maximum allowed date.</param>
+	/// <returns>The clamped date.</returns>
+	private static DateTime ClampDate(DateTime value, DateTime minDate, DateTime maxDate)
+	{
+		if (value < minDate)
+		{
+			return minDate;
+		}
+
+		return value > maxDate ? maxDate : value;
+	}
 
 	/// <summary>Handles exceptions by logging the error and showing a message box</summary>
 	/// <param name="ex">The exception that occurred</param>
