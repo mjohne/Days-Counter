@@ -44,6 +44,7 @@ public partial class MainForm : Form
 		CalculateDateFromSpan();
 		CalculateDaysOfLife();
 		CalculateDaysOfYear();
+		CalculateDateFromYearsMonthsDays();
 	}
 
 	/// <summary>Calculates the days from a date to another date</summary>
@@ -90,6 +91,21 @@ public partial class MainForm : Form
 		int dayOfYear = DateCalculator.GetDayOfYear(date);
 		// Update the label to show the result
 		labelDaysOfYearPassed.Text = $"Day {dayOfYear} of the current year.";
+	}
+
+	/// <summary>Calculates the resulting date by adding or subtracting years, months and days to/from the start date</summary>
+	private void CalculateDateFromYearsMonthsDays()
+	{
+		// Get the start date and the values from the controls
+		DateTime start = dateTimePickerCalculationStart.Value;
+		int years = (int)numericUpDownYears.Value;
+		int months = (int)numericUpDownMonths.Value;
+		int days = (int)numericUpDownDaysCalculation.Value;
+		bool isFuture = radioButtonFuture.Checked;
+		// Calculate the resulting date using the DateCalculator class
+		DateTime resultDate = DateCalculator.CalculateDateFromYearsMonthsDays(start: start, years: years, months: months, days: days, isFuture: isFuture);
+		// Update the date picker to show the resulting date
+		dateTimePickerCalculationResult.Value = resultDate;
 	}
 
 	#endregion
@@ -333,6 +349,46 @@ public partial class MainForm : Form
 	/// <param name="sender">The source of the event, typically the date picker control whose value has changed.</param>
 	/// <param name="e">An EventArgs object that contains the event data.</param>
 	private void DateTimePickerDaysOfYear_ValueChanged(object sender, EventArgs e) => CalculateDaysOfYear();
+
+	/// <summary>Handles the ValueChanged event of the start date picker control and updates the calculated date accordingly.</summary>
+	/// <param name="sender">The source of the event, typically the date picker control whose value has changed.</param>
+	/// <param name="e">An EventArgs object that contains the event data.</param>
+	private void DateTimePickerCalculationStart_ValueChanged(object sender, EventArgs e) => CalculateDateFromYearsMonthsDays();
+
+	/// <summary>Handles the ValueChanged event of the years numeric up-down control and updates the calculated date accordingly.</summary>
+	/// <param name="sender">The source of the event, typically the numeric up-down control whose value has changed.</param>
+	/// <param name="e">An EventArgs object that contains the event data.</param>
+	private void NumericUpDownYears_ValueChanged(object sender, EventArgs e) => CalculateDateFromYearsMonthsDays();
+
+	/// <summary>Handles the ValueChanged event of the months numeric up-down control and updates the calculated date accordingly.</summary>
+	/// <param name="sender">The source of the event, typically the numeric up-down control whose value has changed.</param>
+	/// <param name="e">An EventArgs object that contains the event data.</param>
+	private void NumericUpDownMonths_ValueChanged(object sender, EventArgs e) => CalculateDateFromYearsMonthsDays();
+
+	/// <summary>Handles the ValueChanged event of the days numeric up-down control and updates the calculated date accordingly.</summary>
+	/// <param name="sender">The source of the event, typically the numeric up-down control whose value has changed.</param>
+	/// <param name="e">An EventArgs object that contains the event data.</param>
+	private void NumericUpDownDaysCalculation_ValueChanged(object sender, EventArgs e) => CalculateDateFromYearsMonthsDays();
+
+	/// <summary>Handles the CheckedChanged event of the "Future" radio button and updates the calculated date accordingly.</summary>
+	/// <param name="sender">The source of the event, typically the radio button whose checked state has changed.</param>
+	/// <param name="e">An EventArgs object that contains the event data.</param>
+	private void RadioButtonFuture_CheckedChanged(object sender, EventArgs e) => CalculateDateFromYearsMonthsDays();
+
+	/// <summary>Handles the Click event of the button and toggles the ShowUpDown property of the dateTimePickerCalculationStart control.</summary>
+	/// <param name="sender">The source of the event, typically the button control that was clicked.</param>
+	/// <param name="e">An EventArgs object that contains the event data.</param>
+	private void ButtonSwitchDateCalculationStart_Click(object sender, EventArgs e) => dateTimePickerCalculationStart.ShowUpDown = !dateTimePickerCalculationStart.ShowUpDown;
+
+	/// <summary>Handles the Click event of the button and copies the calculated date to the clipboard.</summary>
+	/// <param name="sender">The source of the event, typically the button control that was clicked.</param>
+	/// <param name="e">An EventArgs object that contains the event data.</param>
+	private void ButtonDateCalculationCopyToClipboard_Click(object sender, EventArgs e) => CopyToClipboard(text: dateTimePickerCalculationResult.Value.ToShortDateString());
+
+	/// <summary>Handles the Click event of the button and pastes the clipboard content into the specified DateTimePicker control.</summary>
+	/// <param name="sender">The source of the event, typically the button control that was clicked.</param>
+	/// <param name="e">An EventArgs object that contains the event data.</param>
+	private void ButtonDateCalculationCopyFromClipboard_Click(object sender, EventArgs e) => PasteToDateTimePicker(dateTimePicker: dateTimePickerCalculationStart);
 
 	#endregion
 
