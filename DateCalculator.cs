@@ -27,4 +27,18 @@ public class DateCalculator
 	/// <param name="date">The date.</param>
 	/// <returns>The day number of the year.</returns>
 	public static int GetDayOfYear(DateTime date) => date.DayOfYear;
+
+	/// <summary>Calculates a resulting date by adding or subtracting a given number of years, months and days to/from a start date.</summary>
+	/// <param name="start">The start date.</param>
+	/// <param name="years">The number of years to add or subtract.</param>
+	/// <param name="months">The number of months to add or subtract.</param>
+	/// <param name="days">The number of days to add or subtract.</param>
+	/// <param name="isFuture">If <see langword="true"/>, the values are added to the start date (future); otherwise they are subtracted (past).</param>
+	/// <returns>The resulting date.</returns>
+	public static DateTime CalculateDateFromYearsMonthsDays(DateTime start, int years, int months, int days, bool isFuture)
+	{
+		// Determine the sign based on the direction (future = positive, past = negative)
+		int sign = isFuture ? 1 : -1;
+		return start.Date.AddYears(value: years * sign).AddMonths(months: months * sign).AddDays(value: days * sign);
+	}
 }

@@ -64,6 +64,21 @@ namespace DaysCounter
 			buttonDateOfTheBirth = new Button();
 			textBoxLicense = new TextBox();
 			labelDaysPlusMinus = new Label();
+			labelDateCalculationStart = new Label();
+			dateTimePickerCalculationStart = new DateTimePicker();
+			buttonSwitchDateCalculationStart = new Button();
+			labelYears = new Label();
+			numericUpDownYears = new NumericUpDown();
+			labelMonths = new Label();
+			numericUpDownMonths = new NumericUpDown();
+			labelDaysCalculation = new Label();
+			numericUpDownDaysCalculation = new NumericUpDown();
+			radioButtonFuture = new RadioButton();
+			radioButtonPast = new RadioButton();
+			labelDateCalculationResult = new Label();
+			dateTimePickerCalculationResult = new DateTimePicker();
+			buttonDateCalculationCopyToClipboard = new Button();
+			buttonDateCalculationCopyFromClipboard = new Button();
 			tabControl = new TabControl();
 			tabPageDateToDate = new TabPage();
 			buttonDateToDateCopyFromClipboard = new Button();
@@ -83,6 +98,7 @@ namespace DaysCounter
 			dateTimePickerDaysOfYear = new DateTimePicker();
 			buttonDaysOfYear = new Button();
 			labelDaysOfYearPassed = new Label();
+			tabPageDateCalculation = new TabPage();
 			tabPageAbout = new TabPage();
 			pictureBox = new PictureBox();
 			tabPageLicense = new TabPage();
@@ -99,6 +115,10 @@ namespace DaysCounter
 			tabPageSpanOfDays.SuspendLayout();
 			tabPageDaysOfLife.SuspendLayout();
 			tabPageDaysOfYear.SuspendLayout();
+			tabPageDateCalculation.SuspendLayout();
+			((ISupportInitialize)numericUpDownYears).BeginInit();
+			((ISupportInitialize)numericUpDownMonths).BeginInit();
+			((ISupportInitialize)numericUpDownDaysCalculation).BeginInit();
 			tabPageAbout.SuspendLayout();
 			((ISupportInitialize)pictureBox).BeginInit();
 			tabPageLicense.SuspendLayout();
@@ -665,6 +685,7 @@ namespace DaysCounter
 			tabControl.Controls.Add(tabPageSpanOfDays);
 			tabControl.Controls.Add(tabPageDaysOfLife);
 			tabControl.Controls.Add(tabPageDaysOfYear);
+			tabControl.Controls.Add(tabPageDateCalculation);
 			tabControl.Controls.Add(tabPageAbout);
 			tabControl.Controls.Add(tabPageLicense);
 			tabControl.Dock = DockStyle.Fill;
@@ -1055,7 +1076,322 @@ namespace DaysCounter
 			labelDaysOfYearPassed.MouseEnter += SetStatusBar_Enter;
 			labelDaysOfYearPassed.MouseLeave += ClearStatusBar_Leave;
 			labelDaysOfYearPassed.MouseHover += ClearStatusBar_Leave;
-			// 
+			//
+			// tabPageDateCalculation
+			//
+			tabPageDateCalculation.AccessibleDescription = "Shows the tab page \"Date calculation\"";
+			tabPageDateCalculation.AccessibleName = "Tab page \"Date calculation\"";
+			tabPageDateCalculation.AccessibleRole = AccessibleRole.PageTab;
+			tabPageDateCalculation.Controls.Add(buttonDateCalculationCopyFromClipboard);
+			tabPageDateCalculation.Controls.Add(buttonDateCalculationCopyToClipboard);
+			tabPageDateCalculation.Controls.Add(dateTimePickerCalculationResult);
+			tabPageDateCalculation.Controls.Add(labelDateCalculationResult);
+			tabPageDateCalculation.Controls.Add(radioButtonPast);
+			tabPageDateCalculation.Controls.Add(radioButtonFuture);
+			tabPageDateCalculation.Controls.Add(numericUpDownDaysCalculation);
+			tabPageDateCalculation.Controls.Add(labelDaysCalculation);
+			tabPageDateCalculation.Controls.Add(numericUpDownMonths);
+			tabPageDateCalculation.Controls.Add(labelMonths);
+			tabPageDateCalculation.Controls.Add(numericUpDownYears);
+			tabPageDateCalculation.Controls.Add(labelYears);
+			tabPageDateCalculation.Controls.Add(buttonSwitchDateCalculationStart);
+			tabPageDateCalculation.Controls.Add(dateTimePickerCalculationStart);
+			tabPageDateCalculation.Controls.Add(labelDateCalculationStart);
+			tabPageDateCalculation.Location = new Point(4, 44);
+			tabPageDateCalculation.Margin = new Padding(4, 3, 4, 3);
+			tabPageDateCalculation.Name = "tabPageDateCalculation";
+			tabPageDateCalculation.Padding = new Padding(4, 3, 4, 3);
+			tabPageDateCalculation.Size = new Size(417, 96);
+			tabPageDateCalculation.TabIndex = 6;
+			tabPageDateCalculation.Text = "Date calculation";
+			toolTip.SetToolTip(tabPageDateCalculation, "Shows the tab page \"Date calculation\"");
+			tabPageDateCalculation.ToolTipText = "Date calculation";
+			tabPageDateCalculation.UseVisualStyleBackColor = true;
+			tabPageDateCalculation.Enter += SetStatusBar_Enter;
+			tabPageDateCalculation.Leave += ClearStatusBar_Leave;
+			tabPageDateCalculation.MouseEnter += SetStatusBar_Enter;
+			tabPageDateCalculation.MouseLeave += ClearStatusBar_Leave;
+			//
+			// labelDateCalculationStart
+			//
+			labelDateCalculationStart.AccessibleDescription = "Shows the description of the start date";
+			labelDateCalculationStart.AccessibleName = "Description of the start date";
+			labelDateCalculationStart.AccessibleRole = AccessibleRole.StaticText;
+			labelDateCalculationStart.AutoEllipsis = true;
+			labelDateCalculationStart.AutoSize = true;
+			labelDateCalculationStart.Location = new Point(9, 12);
+			labelDateCalculationStart.Margin = new Padding(4, 0, 4, 0);
+			labelDateCalculationStart.Name = "labelDateCalculationStart";
+			labelDateCalculationStart.Size = new Size(58, 15);
+			labelDateCalculationStart.TabIndex = 0;
+			labelDateCalculationStart.Text = "&Start date:";
+			toolTip.SetToolTip(labelDateCalculationStart, "The start date for the calculation");
+			labelDateCalculationStart.Enter += SetStatusBar_Enter;
+			labelDateCalculationStart.Leave += ClearStatusBar_Leave;
+			labelDateCalculationStart.MouseEnter += SetStatusBar_Enter;
+			labelDateCalculationStart.MouseLeave += ClearStatusBar_Leave;
+			//
+			// dateTimePickerCalculationStart
+			//
+			dateTimePickerCalculationStart.AccessibleDescription = "Shows the start date";
+			dateTimePickerCalculationStart.AccessibleName = "Start date";
+			dateTimePickerCalculationStart.AccessibleRole = AccessibleRole.SpinButton;
+			dateTimePickerCalculationStart.Location = new Point(77, 7);
+			dateTimePickerCalculationStart.Margin = new Padding(4, 3, 4, 3);
+			dateTimePickerCalculationStart.Name = "dateTimePickerCalculationStart";
+			dateTimePickerCalculationStart.Size = new Size(208, 23);
+			dateTimePickerCalculationStart.TabIndex = 1;
+			toolTip.SetToolTip(dateTimePickerCalculationStart, "Sets the start date for the calculation");
+			dateTimePickerCalculationStart.ValueChanged += DateTimePickerCalculationStart_ValueChanged;
+			dateTimePickerCalculationStart.Enter += SetStatusBar_Enter;
+			dateTimePickerCalculationStart.Leave += ClearStatusBar_Leave;
+			dateTimePickerCalculationStart.MouseEnter += SetStatusBar_Enter;
+			dateTimePickerCalculationStart.MouseLeave += ClearStatusBar_Leave;
+			//
+			// buttonSwitchDateCalculationStart
+			//
+			buttonSwitchDateCalculationStart.AccessibleDescription = "Switches the input method of the start date";
+			buttonSwitchDateCalculationStart.AccessibleName = "Changes the input method of the start date";
+			buttonSwitchDateCalculationStart.AccessibleRole = AccessibleRole.PushButton;
+			buttonSwitchDateCalculationStart.AutoEllipsis = true;
+			buttonSwitchDateCalculationStart.Image = Resources.switch_small;
+			buttonSwitchDateCalculationStart.Location = new Point(293, 7);
+			buttonSwitchDateCalculationStart.Margin = new Padding(4, 3, 4, 3);
+			buttonSwitchDateCalculationStart.Name = "buttonSwitchDateCalculationStart";
+			buttonSwitchDateCalculationStart.Size = new Size(23, 23);
+			buttonSwitchDateCalculationStart.TabIndex = 2;
+			toolTip.SetToolTip(buttonSwitchDateCalculationStart, "Change the input method of the start date");
+			buttonSwitchDateCalculationStart.UseVisualStyleBackColor = true;
+			buttonSwitchDateCalculationStart.Click += ButtonSwitchDateCalculationStart_Click;
+			buttonSwitchDateCalculationStart.Enter += SetStatusBar_Enter;
+			buttonSwitchDateCalculationStart.Leave += ClearStatusBar_Leave;
+			buttonSwitchDateCalculationStart.MouseEnter += SetStatusBar_Enter;
+			buttonSwitchDateCalculationStart.MouseLeave += ClearStatusBar_Leave;
+			//
+			// labelYears
+			//
+			labelYears.AccessibleDescription = "Shows the description of the years";
+			labelYears.AccessibleName = "Description of the years";
+			labelYears.AccessibleRole = AccessibleRole.StaticText;
+			labelYears.AutoEllipsis = true;
+			labelYears.AutoSize = true;
+			labelYears.Location = new Point(9, 39);
+			labelYears.Margin = new Padding(4, 0, 4, 0);
+			labelYears.Name = "labelYears";
+			labelYears.Size = new Size(42, 15);
+			labelYears.TabIndex = 3;
+			labelYears.Text = "&Years:";
+			toolTip.SetToolTip(labelYears, "The number of years to add or subtract");
+			labelYears.Enter += SetStatusBar_Enter;
+			labelYears.Leave += ClearStatusBar_Leave;
+			labelYears.MouseEnter += SetStatusBar_Enter;
+			labelYears.MouseLeave += ClearStatusBar_Leave;
+			//
+			// numericUpDownYears
+			//
+			numericUpDownYears.AccessibleDescription = "Changes the number of years";
+			numericUpDownYears.AccessibleName = "Years";
+			numericUpDownYears.AccessibleRole = AccessibleRole.SpinButton;
+			numericUpDownYears.Location = new Point(77, 37);
+			numericUpDownYears.Margin = new Padding(4, 3, 4, 3);
+			numericUpDownYears.Maximum = new decimal(new int[] { 9999, 0, 0, 0 });
+			numericUpDownYears.Name = "numericUpDownYears";
+			numericUpDownYears.Size = new Size(60, 23);
+			numericUpDownYears.TabIndex = 4;
+			numericUpDownYears.TextAlign = HorizontalAlignment.Center;
+			toolTip.SetToolTip(numericUpDownYears, "Sets the number of years to add or subtract");
+			numericUpDownYears.ValueChanged += NumericUpDownYears_ValueChanged;
+			numericUpDownYears.Enter += SetStatusBar_Enter;
+			numericUpDownYears.Leave += ClearStatusBar_Leave;
+			//
+			// labelMonths
+			//
+			labelMonths.AccessibleDescription = "Shows the description of the months";
+			labelMonths.AccessibleName = "Description of the months";
+			labelMonths.AccessibleRole = AccessibleRole.StaticText;
+			labelMonths.AutoEllipsis = true;
+			labelMonths.AutoSize = true;
+			labelMonths.Location = new Point(148, 39);
+			labelMonths.Margin = new Padding(4, 0, 4, 0);
+			labelMonths.Name = "labelMonths";
+			labelMonths.Size = new Size(53, 15);
+			labelMonths.TabIndex = 5;
+			labelMonths.Text = "&Months:";
+			toolTip.SetToolTip(labelMonths, "The number of months to add or subtract");
+			labelMonths.Enter += SetStatusBar_Enter;
+			labelMonths.Leave += ClearStatusBar_Leave;
+			labelMonths.MouseEnter += SetStatusBar_Enter;
+			labelMonths.MouseLeave += ClearStatusBar_Leave;
+			//
+			// numericUpDownMonths
+			//
+			numericUpDownMonths.AccessibleDescription = "Changes the number of months";
+			numericUpDownMonths.AccessibleName = "Months";
+			numericUpDownMonths.AccessibleRole = AccessibleRole.SpinButton;
+			numericUpDownMonths.Location = new Point(205, 37);
+			numericUpDownMonths.Margin = new Padding(4, 3, 4, 3);
+			numericUpDownMonths.Maximum = new decimal(new int[] { 999999, 0, 0, 0 });
+			numericUpDownMonths.Name = "numericUpDownMonths";
+			numericUpDownMonths.Size = new Size(60, 23);
+			numericUpDownMonths.TabIndex = 6;
+			numericUpDownMonths.TextAlign = HorizontalAlignment.Center;
+			toolTip.SetToolTip(numericUpDownMonths, "Sets the number of months to add or subtract");
+			numericUpDownMonths.ValueChanged += NumericUpDownMonths_ValueChanged;
+			numericUpDownMonths.Enter += SetStatusBar_Enter;
+			numericUpDownMonths.Leave += ClearStatusBar_Leave;
+			//
+			// labelDaysCalculation
+			//
+			labelDaysCalculation.AccessibleDescription = "Shows the description of the days";
+			labelDaysCalculation.AccessibleName = "Description of the days";
+			labelDaysCalculation.AccessibleRole = AccessibleRole.StaticText;
+			labelDaysCalculation.AutoEllipsis = true;
+			labelDaysCalculation.AutoSize = true;
+			labelDaysCalculation.Location = new Point(276, 39);
+			labelDaysCalculation.Margin = new Padding(4, 0, 4, 0);
+			labelDaysCalculation.Name = "labelDaysCalculation";
+			labelDaysCalculation.Size = new Size(37, 15);
+			labelDaysCalculation.TabIndex = 7;
+			labelDaysCalculation.Text = "&Days:";
+			toolTip.SetToolTip(labelDaysCalculation, "The number of days to add or subtract");
+			labelDaysCalculation.Enter += SetStatusBar_Enter;
+			labelDaysCalculation.Leave += ClearStatusBar_Leave;
+			labelDaysCalculation.MouseEnter += SetStatusBar_Enter;
+			labelDaysCalculation.MouseLeave += ClearStatusBar_Leave;
+			//
+			// numericUpDownDaysCalculation
+			//
+			numericUpDownDaysCalculation.AccessibleDescription = "Changes the number of days";
+			numericUpDownDaysCalculation.AccessibleName = "Days";
+			numericUpDownDaysCalculation.AccessibleRole = AccessibleRole.SpinButton;
+			numericUpDownDaysCalculation.Location = new Point(319, 37);
+			numericUpDownDaysCalculation.Margin = new Padding(4, 3, 4, 3);
+			numericUpDownDaysCalculation.Maximum = new decimal(new int[] { 999999, 0, 0, 0 });
+			numericUpDownDaysCalculation.Name = "numericUpDownDaysCalculation";
+			numericUpDownDaysCalculation.Size = new Size(60, 23);
+			numericUpDownDaysCalculation.TabIndex = 8;
+			numericUpDownDaysCalculation.TextAlign = HorizontalAlignment.Center;
+			toolTip.SetToolTip(numericUpDownDaysCalculation, "Sets the number of days to add or subtract");
+			numericUpDownDaysCalculation.ValueChanged += NumericUpDownDaysCalculation_ValueChanged;
+			numericUpDownDaysCalculation.Enter += SetStatusBar_Enter;
+			numericUpDownDaysCalculation.Leave += ClearStatusBar_Leave;
+			//
+			// radioButtonFuture
+			//
+			radioButtonFuture.AccessibleDescription = "Calculates the resulting date in the future";
+			radioButtonFuture.AccessibleName = "Future";
+			radioButtonFuture.AccessibleRole = AccessibleRole.RadioButton;
+			radioButtonFuture.AutoSize = true;
+			radioButtonFuture.Checked = true;
+			radioButtonFuture.Location = new Point(9, 65);
+			radioButtonFuture.Margin = new Padding(4, 3, 4, 3);
+			radioButtonFuture.Name = "radioButtonFuture";
+			radioButtonFuture.Size = new Size(60, 19);
+			radioButtonFuture.TabIndex = 9;
+			radioButtonFuture.TabStop = true;
+			radioButtonFuture.Text = "&Future";
+			toolTip.SetToolTip(radioButtonFuture, "Calculates the date in the future");
+			radioButtonFuture.UseVisualStyleBackColor = true;
+			radioButtonFuture.CheckedChanged += RadioButtonFuture_CheckedChanged;
+			radioButtonFuture.Enter += SetStatusBar_Enter;
+			radioButtonFuture.Leave += ClearStatusBar_Leave;
+			radioButtonFuture.MouseEnter += SetStatusBar_Enter;
+			radioButtonFuture.MouseLeave += ClearStatusBar_Leave;
+			//
+			// radioButtonPast
+			//
+			radioButtonPast.AccessibleDescription = "Calculates the resulting date in the past";
+			radioButtonPast.AccessibleName = "Past";
+			radioButtonPast.AccessibleRole = AccessibleRole.RadioButton;
+			radioButtonPast.AutoSize = true;
+			radioButtonPast.Location = new Point(77, 65);
+			radioButtonPast.Margin = new Padding(4, 3, 4, 3);
+			radioButtonPast.Name = "radioButtonPast";
+			radioButtonPast.Size = new Size(50, 19);
+			radioButtonPast.TabIndex = 10;
+			radioButtonPast.Text = "&Past";
+			toolTip.SetToolTip(radioButtonPast, "Calculates the date in the past");
+			radioButtonPast.UseVisualStyleBackColor = true;
+			radioButtonPast.Enter += SetStatusBar_Enter;
+			radioButtonPast.Leave += ClearStatusBar_Leave;
+			radioButtonPast.MouseEnter += SetStatusBar_Enter;
+			radioButtonPast.MouseLeave += ClearStatusBar_Leave;
+			//
+			// labelDateCalculationResult
+			//
+			labelDateCalculationResult.AccessibleDescription = "Shows the description of the calculated date";
+			labelDateCalculationResult.AccessibleName = "Description of the calculated date";
+			labelDateCalculationResult.AccessibleRole = AccessibleRole.StaticText;
+			labelDateCalculationResult.AutoEllipsis = true;
+			labelDateCalculationResult.AutoSize = true;
+			labelDateCalculationResult.Location = new Point(148, 69);
+			labelDateCalculationResult.Margin = new Padding(4, 0, 4, 0);
+			labelDateCalculationResult.Name = "labelDateCalculationResult";
+			labelDateCalculationResult.Size = new Size(44, 15);
+			labelDateCalculationResult.TabIndex = 11;
+			labelDateCalculationResult.Text = "Result:";
+			toolTip.SetToolTip(labelDateCalculationResult, "The calculated date");
+			labelDateCalculationResult.Enter += SetStatusBar_Enter;
+			labelDateCalculationResult.Leave += ClearStatusBar_Leave;
+			labelDateCalculationResult.MouseEnter += SetStatusBar_Enter;
+			labelDateCalculationResult.MouseLeave += ClearStatusBar_Leave;
+			//
+			// dateTimePickerCalculationResult
+			//
+			dateTimePickerCalculationResult.AccessibleDescription = "Shows the calculated date";
+			dateTimePickerCalculationResult.AccessibleName = "Calculated date";
+			dateTimePickerCalculationResult.AccessibleRole = AccessibleRole.SpinButton;
+			dateTimePickerCalculationResult.Enabled = false;
+			dateTimePickerCalculationResult.Location = new Point(196, 65);
+			dateTimePickerCalculationResult.Margin = new Padding(4, 3, 4, 3);
+			dateTimePickerCalculationResult.Name = "dateTimePickerCalculationResult";
+			dateTimePickerCalculationResult.Size = new Size(150, 23);
+			dateTimePickerCalculationResult.TabIndex = 12;
+			toolTip.SetToolTip(dateTimePickerCalculationResult, "The resulting date of the calculation");
+			dateTimePickerCalculationResult.Enter += SetStatusBar_Enter;
+			dateTimePickerCalculationResult.Leave += ClearStatusBar_Leave;
+			dateTimePickerCalculationResult.MouseEnter += SetStatusBar_Enter;
+			dateTimePickerCalculationResult.MouseLeave += ClearStatusBar_Leave;
+			//
+			// buttonDateCalculationCopyFromClipboard
+			//
+			buttonDateCalculationCopyFromClipboard.AccessibleDescription = "Copies the date from the clipboard to the calendar";
+			buttonDateCalculationCopyFromClipboard.AccessibleName = "Copy from clipboard";
+			buttonDateCalculationCopyFromClipboard.AccessibleRole = AccessibleRole.PushButton;
+			buttonDateCalculationCopyFromClipboard.AutoEllipsis = true;
+			buttonDateCalculationCopyFromClipboard.Image = (Image)resources.GetObject("buttonDateToDateCopyFromClipboard.Image");
+			buttonDateCalculationCopyFromClipboard.Location = new Point(383, 7);
+			buttonDateCalculationCopyFromClipboard.Margin = new Padding(4, 3, 4, 3);
+			buttonDateCalculationCopyFromClipboard.Name = "buttonDateCalculationCopyFromClipboard";
+			buttonDateCalculationCopyFromClipboard.Size = new Size(26, 26);
+			buttonDateCalculationCopyFromClipboard.TabIndex = 13;
+			toolTip.SetToolTip(buttonDateCalculationCopyFromClipboard, "Copy the date from the clipboard to the calendar");
+			buttonDateCalculationCopyFromClipboard.UseVisualStyleBackColor = true;
+			buttonDateCalculationCopyFromClipboard.Click += ButtonDateCalculationCopyFromClipboard_Click;
+			buttonDateCalculationCopyFromClipboard.Enter += SetStatusBar_Enter;
+			buttonDateCalculationCopyFromClipboard.Leave += ClearStatusBar_Leave;
+			buttonDateCalculationCopyFromClipboard.MouseEnter += SetStatusBar_Enter;
+			buttonDateCalculationCopyFromClipboard.MouseLeave += ClearStatusBar_Leave;
+			//
+			// buttonDateCalculationCopyToClipboard
+			//
+			buttonDateCalculationCopyToClipboard.AccessibleDescription = "Copies the calculated date to clipboard";
+			buttonDateCalculationCopyToClipboard.AccessibleName = "Copy to clipboard";
+			buttonDateCalculationCopyToClipboard.AccessibleRole = AccessibleRole.PushButton;
+			buttonDateCalculationCopyToClipboard.Image = (Image)resources.GetObject("buttonDateToDateCopyToClipboard.Image");
+			buttonDateCalculationCopyToClipboard.Location = new Point(383, 64);
+			buttonDateCalculationCopyToClipboard.Margin = new Padding(4, 3, 4, 3);
+			buttonDateCalculationCopyToClipboard.Name = "buttonDateCalculationCopyToClipboard";
+			buttonDateCalculationCopyToClipboard.Size = new Size(26, 26);
+			buttonDateCalculationCopyToClipboard.TabIndex = 14;
+			toolTip.SetToolTip(buttonDateCalculationCopyToClipboard, "Copy the result to clipboard");
+			buttonDateCalculationCopyToClipboard.UseVisualStyleBackColor = true;
+			buttonDateCalculationCopyToClipboard.Click += ButtonDateCalculationCopyToClipboard_Click;
+			buttonDateCalculationCopyToClipboard.Enter += SetStatusBar_Enter;
+			buttonDateCalculationCopyToClipboard.Leave += ClearStatusBar_Leave;
+			buttonDateCalculationCopyToClipboard.MouseEnter += SetStatusBar_Enter;
+			buttonDateCalculationCopyToClipboard.MouseLeave += ClearStatusBar_Leave;
+			//
 			// tabPageAbout
 			// 
 			tabPageAbout.AccessibleDescription = "Shows the tab page \"About\"";
@@ -1246,6 +1582,11 @@ namespace DaysCounter
 			tabPageDaysOfLife.PerformLayout();
 			tabPageDaysOfYear.ResumeLayout(false);
 			tabPageDaysOfYear.PerformLayout();
+			tabPageDateCalculation.ResumeLayout(false);
+			tabPageDateCalculation.PerformLayout();
+			((ISupportInitialize)numericUpDownYears).EndInit();
+			((ISupportInitialize)numericUpDownMonths).EndInit();
+			((ISupportInitialize)numericUpDownDaysCalculation).EndInit();
 			tabPageAbout.ResumeLayout(false);
 			tabPageAbout.PerformLayout();
 			((ISupportInitialize)pictureBox).EndInit();
@@ -1319,6 +1660,21 @@ namespace DaysCounter
 		private Button buttonDaysOfLifeCopyFromClipboard;
 		private Button buttonDaysOfYearCopyFromClipboard;
 		private Button buttonExportToCalendar;
+		private TabPage tabPageDateCalculation;
+		private Label labelDateCalculationStart;
+		private DateTimePicker dateTimePickerCalculationStart;
+		private Button buttonSwitchDateCalculationStart;
+		private Label labelYears;
+		private NumericUpDown numericUpDownYears;
+		private Label labelMonths;
+		private NumericUpDown numericUpDownMonths;
+		private Label labelDaysCalculation;
+		private NumericUpDown numericUpDownDaysCalculation;
+		private RadioButton radioButtonFuture;
+		private RadioButton radioButtonPast;
+		private Label labelDateCalculationResult;
+		private DateTimePicker dateTimePickerCalculationResult;
+		private Button buttonDateCalculationCopyToClipboard;
+		private Button buttonDateCalculationCopyFromClipboard;
 	}
 }
-
