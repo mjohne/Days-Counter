@@ -64,21 +64,6 @@ namespace DaysCounter
 			buttonDateOfTheBirth = new Button();
 			textBoxLicense = new TextBox();
 			labelDaysPlusMinus = new Label();
-			labelDateCalculationStart = new Label();
-			dateTimePickerCalculationStart = new DateTimePicker();
-			buttonSwitchDateCalculationStart = new Button();
-			labelYears = new Label();
-			numericUpDownYears = new NumericUpDown();
-			labelMonths = new Label();
-			numericUpDownMonths = new NumericUpDown();
-			labelDaysCalculation = new Label();
-			numericUpDownDaysCalculation = new NumericUpDown();
-			radioButtonFuture = new RadioButton();
-			radioButtonPast = new RadioButton();
-			labelDateCalculationResult = new Label();
-			dateTimePickerCalculationResult = new DateTimePicker();
-			buttonDateCalculationCopyToClipboard = new Button();
-			buttonDateCalculationCopyFromClipboard = new Button();
 			tabControl = new TabControl();
 			tabPageDateToDate = new TabPage();
 			buttonDateToDateCopyFromClipboard = new Button();
@@ -99,6 +84,21 @@ namespace DaysCounter
 			buttonDaysOfYear = new Button();
 			labelDaysOfYearPassed = new Label();
 			tabPageDateCalculation = new TabPage();
+			buttonDateCalculationCopyFromClipboard = new Button();
+			buttonDateCalculationCopyToClipboard = new Button();
+			dateTimePickerCalculationResult = new DateTimePicker();
+			labelDateCalculationResult = new Label();
+			radioButtonPast = new RadioButton();
+			radioButtonFuture = new RadioButton();
+			numericUpDownDaysCalculation = new NumericUpDown();
+			labelDaysCalculation = new Label();
+			numericUpDownMonths = new NumericUpDown();
+			labelMonths = new Label();
+			numericUpDownYears = new NumericUpDown();
+			labelYears = new Label();
+			buttonSwitchDateCalculationStart = new Button();
+			dateTimePickerCalculationStart = new DateTimePicker();
+			labelDateCalculationStart = new Label();
 			tabPageAbout = new TabPage();
 			pictureBox = new PictureBox();
 			tabPageLicense = new TabPage();
@@ -116,9 +116,9 @@ namespace DaysCounter
 			tabPageDaysOfLife.SuspendLayout();
 			tabPageDaysOfYear.SuspendLayout();
 			tabPageDateCalculation.SuspendLayout();
-			((ISupportInitialize)numericUpDownYears).BeginInit();
-			((ISupportInitialize)numericUpDownMonths).BeginInit();
 			((ISupportInitialize)numericUpDownDaysCalculation).BeginInit();
+			((ISupportInitialize)numericUpDownMonths).BeginInit();
+			((ISupportInitialize)numericUpDownYears).BeginInit();
 			tabPageAbout.SuspendLayout();
 			((ISupportInitialize)pictureBox).BeginInit();
 			tabPageLicense.SuspendLayout();
@@ -138,6 +138,7 @@ namespace DaysCounter
 			imageList.Images.SetKeyName(3, "calendar-day.png");
 			imageList.Images.SetKeyName(4, "information-button.png");
 			imageList.Images.SetKeyName(5, "script-text.png");
+			imageList.Images.SetKeyName(6, "calendar-blue.png");
 			// 
 			// statusStrip
 			// 
@@ -227,7 +228,7 @@ namespace DaysCounter
 			labelTitle.AutoSize = true;
 			labelTitle.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Bold);
 			labelTitle.Location = new Point(55, 3);
-			labelTitle.Margin = new Padding(4, 0, 4, 0);
+			labelTitle.Margin = new Padding(3);
 			labelTitle.Name = "labelTitle";
 			labelTitle.Size = new Size(165, 30);
 			labelTitle.TabIndex = 0;
@@ -246,8 +247,8 @@ namespace DaysCounter
 			labelDescription.AccessibleRole = AccessibleRole.StaticText;
 			labelDescription.AutoEllipsis = true;
 			labelDescription.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-			labelDescription.Location = new Point(55, 33);
-			labelDescription.Margin = new Padding(4, 0, 4, 0);
+			labelDescription.Location = new Point(55, 36);
+			labelDescription.Margin = new Padding(3);
 			labelDescription.Name = "labelDescription";
 			labelDescription.Size = new Size(353, 36);
 			labelDescription.TabIndex = 1;
@@ -268,7 +269,7 @@ namespace DaysCounter
 			labelCopyright.AutoSize = true;
 			labelCopyright.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
 			labelCopyright.Location = new Point(55, 72);
-			labelCopyright.Margin = new Padding(4, 0, 4, 0);
+			labelCopyright.Margin = new Padding(3);
 			labelCopyright.Name = "labelCopyright";
 			labelCopyright.Size = new Size(133, 21);
 			labelCopyright.TabIndex = 2;
@@ -286,7 +287,6 @@ namespace DaysCounter
 			dateTimePickerDateOfTheBirth.AccessibleName = "Date of the birth";
 			dateTimePickerDateOfTheBirth.AccessibleRole = AccessibleRole.SpinButton;
 			dateTimePickerDateOfTheBirth.Location = new Point(117, 7);
-			dateTimePickerDateOfTheBirth.Margin = new Padding(4, 3, 4, 3);
 			dateTimePickerDateOfTheBirth.Name = "dateTimePickerDateOfTheBirth";
 			dateTimePickerDateOfTheBirth.Size = new Size(233, 23);
 			dateTimePickerDateOfTheBirth.TabIndex = 1;
@@ -304,8 +304,8 @@ namespace DaysCounter
 			labelDateOfTheBirth.AccessibleRole = AccessibleRole.StaticText;
 			labelDateOfTheBirth.AutoEllipsis = true;
 			labelDateOfTheBirth.AutoSize = true;
-			labelDateOfTheBirth.Location = new Point(9, 12);
-			labelDateOfTheBirth.Margin = new Padding(4, 0, 4, 0);
+			labelDateOfTheBirth.Location = new Point(5, 9);
+			labelDateOfTheBirth.Margin = new Padding(3);
 			labelDateOfTheBirth.Name = "labelDateOfTheBirth";
 			labelDateOfTheBirth.Size = new Size(96, 15);
 			labelDateOfTheBirth.TabIndex = 0;
@@ -322,7 +322,6 @@ namespace DaysCounter
 			dateTimePickerDateIn.AccessibleName = "Beginning date";
 			dateTimePickerDateIn.AccessibleRole = AccessibleRole.SpinButton;
 			dateTimePickerDateIn.Location = new Point(77, 7);
-			dateTimePickerDateIn.Margin = new Padding(4, 3, 4, 3);
 			dateTimePickerDateIn.Name = "dateTimePickerDateIn";
 			dateTimePickerDateIn.Size = new Size(208, 23);
 			dateTimePickerDateIn.TabIndex = 1;
@@ -339,7 +338,6 @@ namespace DaysCounter
 			numericUpDownDays.AccessibleName = "Day span";
 			numericUpDownDays.AccessibleRole = AccessibleRole.SpinButton;
 			numericUpDownDays.Location = new Point(77, 37);
-			numericUpDownDays.Margin = new Padding(4, 3, 4, 3);
 			numericUpDownDays.Maximum = new decimal(new int[] { 99999, 0, 0, 0 });
 			numericUpDownDays.Minimum = new decimal(new int[] { 99999, 0, 0, int.MinValue });
 			numericUpDownDays.Name = "numericUpDownDays";
@@ -358,7 +356,6 @@ namespace DaysCounter
 			dateTimePickerDateOut.AccessibleRole = AccessibleRole.SpinButton;
 			dateTimePickerDateOut.Enabled = false;
 			dateTimePickerDateOut.Location = new Point(77, 67);
-			dateTimePickerDateOut.Margin = new Padding(4, 3, 4, 3);
 			dateTimePickerDateOut.Name = "dateTimePickerDateOut";
 			dateTimePickerDateOut.Size = new Size(208, 23);
 			dateTimePickerDateOut.TabIndex = 7;
@@ -375,8 +372,8 @@ namespace DaysCounter
 			labelDateIn.AccessibleRole = AccessibleRole.StaticText;
 			labelDateIn.AutoEllipsis = true;
 			labelDateIn.AutoSize = true;
-			labelDateIn.Location = new Point(9, 12);
-			labelDateIn.Margin = new Padding(4, 0, 4, 0);
+			labelDateIn.Location = new Point(5, 9);
+			labelDateIn.Margin = new Padding(3);
 			labelDateIn.Name = "labelDateIn";
 			labelDateIn.Size = new Size(47, 15);
 			labelDateIn.TabIndex = 0;
@@ -394,8 +391,8 @@ namespace DaysCounter
 			labelDateOut.AccessibleRole = AccessibleRole.StaticText;
 			labelDateOut.AutoEllipsis = true;
 			labelDateOut.AutoSize = true;
-			labelDateOut.Location = new Point(9, 72);
-			labelDateOut.Margin = new Padding(4, 0, 4, 0);
+			labelDateOut.Location = new Point(5, 69);
+			labelDateOut.Margin = new Padding(3);
 			labelDateOut.Name = "labelDateOut";
 			labelDateOut.Size = new Size(55, 15);
 			labelDateOut.TabIndex = 6;
@@ -412,7 +409,6 @@ namespace DaysCounter
 			dateTimePickerEnd.AccessibleName = "Ending date";
 			dateTimePickerEnd.AccessibleRole = AccessibleRole.SpinButton;
 			dateTimePickerEnd.Location = new Point(57, 37);
-			dateTimePickerEnd.Margin = new Padding(4, 3, 4, 3);
 			dateTimePickerEnd.Name = "dateTimePickerEnd";
 			dateTimePickerEnd.Size = new Size(233, 23);
 			dateTimePickerEnd.TabIndex = 4;
@@ -429,7 +425,6 @@ namespace DaysCounter
 			dateTimePickerBegin.AccessibleName = "Beginning date";
 			dateTimePickerBegin.AccessibleRole = AccessibleRole.SpinButton;
 			dateTimePickerBegin.Location = new Point(57, 7);
-			dateTimePickerBegin.Margin = new Padding(4, 3, 4, 3);
 			dateTimePickerBegin.Name = "dateTimePickerBegin";
 			dateTimePickerBegin.Size = new Size(233, 23);
 			dateTimePickerBegin.TabIndex = 1;
@@ -447,8 +442,8 @@ namespace DaysCounter
 			labelDateBegin.AccessibleRole = AccessibleRole.StaticText;
 			labelDateBegin.AutoEllipsis = true;
 			labelDateBegin.AutoSize = true;
-			labelDateBegin.Location = new Point(9, 12);
-			labelDateBegin.Margin = new Padding(4, 0, 4, 0);
+			labelDateBegin.Location = new Point(5, 9);
+			labelDateBegin.Margin = new Padding(3);
 			labelDateBegin.Name = "labelDateBegin";
 			labelDateBegin.Size = new Size(38, 15);
 			labelDateBegin.TabIndex = 0;
@@ -466,8 +461,8 @@ namespace DaysCounter
 			labelDateEnd.AccessibleRole = AccessibleRole.StaticText;
 			labelDateEnd.AutoEllipsis = true;
 			labelDateEnd.AutoSize = true;
-			labelDateEnd.Location = new Point(9, 42);
-			labelDateEnd.Margin = new Padding(4, 0, 4, 0);
+			labelDateEnd.Location = new Point(5, 39);
+			labelDateEnd.Margin = new Padding(3);
 			labelDateEnd.Name = "labelDateEnd";
 			labelDateEnd.Size = new Size(22, 15);
 			labelDateEnd.TabIndex = 3;
@@ -485,8 +480,8 @@ namespace DaysCounter
 			labelDays.AccessibleRole = AccessibleRole.StaticText;
 			labelDays.AutoEllipsis = true;
 			labelDays.AutoSize = true;
-			labelDays.Location = new Point(9, 68);
-			labelDays.Margin = new Padding(4, 0, 4, 0);
+			labelDays.Location = new Point(5, 65);
+			labelDays.Margin = new Padding(3);
 			labelDays.Name = "labelDays";
 			labelDays.Size = new Size(35, 15);
 			labelDays.TabIndex = 6;
@@ -504,8 +499,8 @@ namespace DaysCounter
 			labelDaysCounted.AccessibleRole = AccessibleRole.StaticText;
 			labelDaysCounted.AutoEllipsis = true;
 			labelDaysCounted.AutoSize = true;
-			labelDaysCounted.Location = new Point(59, 68);
-			labelDaysCounted.Margin = new Padding(4, 0, 4, 0);
+			labelDaysCounted.Location = new Point(55, 65);
+			labelDaysCounted.Margin = new Padding(3);
 			labelDaysCounted.Name = "labelDaysCounted";
 			labelDaysCounted.Size = new Size(114, 15);
 			labelDaysCounted.TabIndex = 7;
@@ -523,8 +518,8 @@ namespace DaysCounter
 			labelDaysOld.AccessibleRole = AccessibleRole.StaticText;
 			labelDaysOld.AutoEllipsis = true;
 			labelDaysOld.AutoSize = true;
-			labelDaysOld.Location = new Point(113, 46);
-			labelDaysOld.Margin = new Padding(4, 0, 4, 0);
+			labelDaysOld.Location = new Point(109, 43);
+			labelDaysOld.Margin = new Padding(3);
 			labelDaysOld.Name = "labelDaysOld";
 			labelDaysOld.Size = new Size(129, 15);
 			labelDaysOld.TabIndex = 4;
@@ -542,8 +537,8 @@ namespace DaysCounter
 			labelDaysSpan.AccessibleRole = AccessibleRole.StaticText;
 			labelDaysSpan.AutoEllipsis = true;
 			labelDaysSpan.AutoSize = true;
-			labelDaysSpan.Location = new Point(9, 46);
-			labelDaysSpan.Margin = new Padding(4, 0, 4, 0);
+			labelDaysSpan.Location = new Point(5, 43);
+			labelDaysSpan.Margin = new Padding(3);
 			labelDaysSpan.Name = "labelDaysSpan";
 			labelDaysSpan.Size = new Size(35, 15);
 			labelDaysSpan.TabIndex = 3;
@@ -562,7 +557,6 @@ namespace DaysCounter
 			buttonSwitchDateEnd.AutoEllipsis = true;
 			buttonSwitchDateEnd.Image = Resources.switch_small;
 			buttonSwitchDateEnd.Location = new Point(298, 37);
-			buttonSwitchDateEnd.Margin = new Padding(4, 3, 4, 3);
 			buttonSwitchDateEnd.Name = "buttonSwitchDateEnd";
 			buttonSwitchDateEnd.Size = new Size(23, 23);
 			buttonSwitchDateEnd.TabIndex = 5;
@@ -582,7 +576,6 @@ namespace DaysCounter
 			buttonSwitchDateBegin.AutoEllipsis = true;
 			buttonSwitchDateBegin.Image = Resources.switch_small;
 			buttonSwitchDateBegin.Location = new Point(298, 7);
-			buttonSwitchDateBegin.Margin = new Padding(4, 3, 4, 3);
 			buttonSwitchDateBegin.Name = "buttonSwitchDateBegin";
 			buttonSwitchDateBegin.Size = new Size(23, 23);
 			buttonSwitchDateBegin.TabIndex = 2;
@@ -602,7 +595,6 @@ namespace DaysCounter
 			buttonSwitchDateIn.AutoEllipsis = true;
 			buttonSwitchDateIn.Image = Resources.switch_small;
 			buttonSwitchDateIn.Location = new Point(293, 7);
-			buttonSwitchDateIn.Margin = new Padding(4, 3, 4, 3);
 			buttonSwitchDateIn.Name = "buttonSwitchDateIn";
 			buttonSwitchDateIn.Size = new Size(23, 23);
 			buttonSwitchDateIn.TabIndex = 2;
@@ -622,7 +614,6 @@ namespace DaysCounter
 			buttonDateOfTheBirth.AutoEllipsis = true;
 			buttonDateOfTheBirth.Image = Resources.switch_small;
 			buttonDateOfTheBirth.Location = new Point(357, 7);
-			buttonDateOfTheBirth.Margin = new Padding(4, 3, 4, 3);
 			buttonDateOfTheBirth.Name = "buttonDateOfTheBirth";
 			buttonDateOfTheBirth.Size = new Size(23, 23);
 			buttonDateOfTheBirth.TabIndex = 2;
@@ -641,7 +632,6 @@ namespace DaysCounter
 			textBoxLicense.AccessibleRole = AccessibleRole.Text;
 			textBoxLicense.Dock = DockStyle.Fill;
 			textBoxLicense.Location = new Point(0, 0);
-			textBoxLicense.Margin = new Padding(7, 3, 4, 3);
 			textBoxLicense.MaxLength = 9999999;
 			textBoxLicense.Multiline = true;
 			textBoxLicense.Name = "textBoxLicense";
@@ -664,8 +654,8 @@ namespace DaysCounter
 			labelDaysPlusMinus.AccessibleRole = AccessibleRole.StaticText;
 			labelDaysPlusMinus.AutoEllipsis = true;
 			labelDaysPlusMinus.AutoSize = true;
-			labelDaysPlusMinus.Location = new Point(9, 39);
-			labelDaysPlusMinus.Margin = new Padding(4, 0, 4, 0);
+			labelDaysPlusMinus.Location = new Point(5, 36);
+			labelDaysPlusMinus.Margin = new Padding(3);
 			labelDaysPlusMinus.Name = "labelDaysPlusMinus";
 			labelDaysPlusMinus.Size = new Size(64, 15);
 			labelDaysPlusMinus.TabIndex = 4;
@@ -679,7 +669,7 @@ namespace DaysCounter
 			// tabControl
 			// 
 			tabControl.AccessibleDescription = "Shows the tabs";
-			tabControl.AccessibleName = "Shows the tabs";
+			tabControl.AccessibleName = "Show the tabs";
 			tabControl.AccessibleRole = AccessibleRole.PageTab;
 			tabControl.Controls.Add(tabPageDateToDate);
 			tabControl.Controls.Add(tabPageSpanOfDays);
@@ -692,7 +682,6 @@ namespace DaysCounter
 			tabControl.HotTrack = true;
 			tabControl.ImageList = imageList;
 			tabControl.Location = new Point(0, 0);
-			tabControl.Margin = new Padding(4, 3, 4, 3);
 			tabControl.Multiline = true;
 			tabControl.Name = "tabControl";
 			tabControl.SelectedIndex = 0;
@@ -722,9 +711,7 @@ namespace DaysCounter
 			tabPageDateToDate.Controls.Add(dateTimePickerEnd);
 			tabPageDateToDate.ImageKey = "calendar-select-days.png";
 			tabPageDateToDate.Location = new Point(4, 44);
-			tabPageDateToDate.Margin = new Padding(4, 3, 4, 3);
 			tabPageDateToDate.Name = "tabPageDateToDate";
-			tabPageDateToDate.Padding = new Padding(4, 3, 4, 3);
 			tabPageDateToDate.Size = new Size(417, 96);
 			tabPageDateToDate.TabIndex = 0;
 			tabPageDateToDate.Text = "From date to date";
@@ -744,7 +731,6 @@ namespace DaysCounter
 			buttonDateToDateCopyFromClipboard.AutoEllipsis = true;
 			buttonDateToDateCopyFromClipboard.Image = (Image)resources.GetObject("buttonDateToDateCopyFromClipboard.Image");
 			buttonDateToDateCopyFromClipboard.Location = new Point(383, 7);
-			buttonDateToDateCopyFromClipboard.Margin = new Padding(4, 3, 4, 3);
 			buttonDateToDateCopyFromClipboard.Name = "buttonDateToDateCopyFromClipboard";
 			buttonDateToDateCopyFromClipboard.Size = new Size(26, 26);
 			buttonDateToDateCopyFromClipboard.TabIndex = 9;
@@ -791,9 +777,7 @@ namespace DaysCounter
 			tabPageSpanOfDays.Controls.Add(buttonSwitchDateIn);
 			tabPageSpanOfDays.ImageKey = "calendar-select-days-span.png";
 			tabPageSpanOfDays.Location = new Point(4, 44);
-			tabPageSpanOfDays.Margin = new Padding(4, 3, 4, 3);
 			tabPageSpanOfDays.Name = "tabPageSpanOfDays";
-			tabPageSpanOfDays.Padding = new Padding(4, 3, 4, 3);
 			tabPageSpanOfDays.Size = new Size(417, 96);
 			tabPageSpanOfDays.TabIndex = 1;
 			tabPageSpanOfDays.Text = "Span of days";
@@ -833,7 +817,6 @@ namespace DaysCounter
 			buttonSpanOfDaysCopyFromClipboard.AutoEllipsis = true;
 			buttonSpanOfDaysCopyFromClipboard.Image = (Image)resources.GetObject("buttonSpanOfDaysCopyFromClipboard.Image");
 			buttonSpanOfDaysCopyFromClipboard.Location = new Point(383, 7);
-			buttonSpanOfDaysCopyFromClipboard.Margin = new Padding(4, 3, 4, 3);
 			buttonSpanOfDaysCopyFromClipboard.Name = "buttonSpanOfDaysCopyFromClipboard";
 			buttonSpanOfDaysCopyFromClipboard.Size = new Size(26, 26);
 			buttonSpanOfDaysCopyFromClipboard.TabIndex = 3;
@@ -873,9 +856,7 @@ namespace DaysCounter
 			tabPageDaysOfLife.Controls.Add(buttonDateOfTheBirth);
 			tabPageDaysOfLife.ImageKey = "calendar-select.png";
 			tabPageDaysOfLife.Location = new Point(4, 44);
-			tabPageDaysOfLife.Margin = new Padding(4, 3, 4, 3);
 			tabPageDaysOfLife.Name = "tabPageDaysOfLife";
-			tabPageDaysOfLife.Padding = new Padding(4, 3, 4, 3);
 			tabPageDaysOfLife.Size = new Size(417, 96);
 			tabPageDaysOfLife.TabIndex = 3;
 			tabPageDaysOfLife.Text = "Days of life";
@@ -895,7 +876,6 @@ namespace DaysCounter
 			buttonDaysOfLifeCopyFromClipboard.AutoEllipsis = true;
 			buttonDaysOfLifeCopyFromClipboard.Image = (Image)resources.GetObject("buttonDaysOfLifeCopyFromClipboard.Image");
 			buttonDaysOfLifeCopyFromClipboard.Location = new Point(383, 7);
-			buttonDaysOfLifeCopyFromClipboard.Margin = new Padding(4, 3, 4, 3);
 			buttonDaysOfLifeCopyFromClipboard.Name = "buttonDaysOfLifeCopyFromClipboard";
 			buttonDaysOfLifeCopyFromClipboard.Size = new Size(26, 26);
 			buttonDaysOfLifeCopyFromClipboard.TabIndex = 10;
@@ -936,7 +916,6 @@ namespace DaysCounter
 			tabPageDaysOfYear.ImageKey = "calendar-day.png";
 			tabPageDaysOfYear.Location = new Point(4, 44);
 			tabPageDaysOfYear.Name = "tabPageDaysOfYear";
-			tabPageDaysOfYear.Padding = new Padding(3);
 			tabPageDaysOfYear.Size = new Size(417, 96);
 			tabPageDaysOfYear.TabIndex = 5;
 			tabPageDaysOfYear.Text = "Days of year";
@@ -956,7 +935,6 @@ namespace DaysCounter
 			buttonDaysOfYearCopyFromClipboard.AutoEllipsis = true;
 			buttonDaysOfYearCopyFromClipboard.Image = (Image)resources.GetObject("buttonDaysOfYearCopyFromClipboard.Image");
 			buttonDaysOfYearCopyFromClipboard.Location = new Point(383, 7);
-			buttonDaysOfYearCopyFromClipboard.Margin = new Padding(4, 3, 4, 3);
 			buttonDaysOfYearCopyFromClipboard.Name = "buttonDaysOfYearCopyFromClipboard";
 			buttonDaysOfYearCopyFromClipboard.Size = new Size(26, 26);
 			buttonDaysOfYearCopyFromClipboard.TabIndex = 10;
@@ -989,8 +967,8 @@ namespace DaysCounter
 			labelDaysOfYear.AccessibleRole = AccessibleRole.StaticText;
 			labelDaysOfYear.AutoEllipsis = true;
 			labelDaysOfYear.AutoSize = true;
-			labelDaysOfYear.Location = new Point(9, 52);
-			labelDaysOfYear.Margin = new Padding(4, 0, 4, 0);
+			labelDaysOfYear.Location = new Point(6, 49);
+			labelDaysOfYear.Margin = new Padding(3);
 			labelDaysOfYear.Name = "labelDaysOfYear";
 			labelDaysOfYear.Size = new Size(35, 15);
 			labelDaysOfYear.TabIndex = 3;
@@ -1008,8 +986,8 @@ namespace DaysCounter
 			labelDate.AccessibleRole = AccessibleRole.StaticText;
 			labelDate.AutoEllipsis = true;
 			labelDate.AutoSize = true;
-			labelDate.Location = new Point(9, 12);
-			labelDate.Margin = new Padding(4, 0, 4, 0);
+			labelDate.Location = new Point(6, 9);
+			labelDate.Margin = new Padding(3);
 			labelDate.Name = "labelDate";
 			labelDate.Size = new Size(34, 15);
 			labelDate.TabIndex = 0;
@@ -1026,7 +1004,6 @@ namespace DaysCounter
 			dateTimePickerDaysOfYear.AccessibleName = "date";
 			dateTimePickerDaysOfYear.AccessibleRole = AccessibleRole.SpinButton;
 			dateTimePickerDaysOfYear.Location = new Point(57, 7);
-			dateTimePickerDaysOfYear.Margin = new Padding(4, 3, 4, 3);
 			dateTimePickerDaysOfYear.Name = "dateTimePickerDaysOfYear";
 			dateTimePickerDaysOfYear.Size = new Size(233, 23);
 			dateTimePickerDaysOfYear.TabIndex = 1;
@@ -1045,7 +1022,6 @@ namespace DaysCounter
 			buttonDaysOfYear.AutoEllipsis = true;
 			buttonDaysOfYear.Image = Resources.switch_small;
 			buttonDaysOfYear.Location = new Point(298, 7);
-			buttonDaysOfYear.Margin = new Padding(4, 3, 4, 3);
 			buttonDaysOfYear.Name = "buttonDaysOfYear";
 			buttonDaysOfYear.Size = new Size(23, 23);
 			buttonDaysOfYear.TabIndex = 2;
@@ -1064,8 +1040,8 @@ namespace DaysCounter
 			labelDaysOfYearPassed.AccessibleRole = AccessibleRole.StaticText;
 			labelDaysOfYearPassed.AutoEllipsis = true;
 			labelDaysOfYearPassed.AutoSize = true;
-			labelDaysOfYearPassed.Location = new Point(57, 52);
-			labelDaysOfYearPassed.Margin = new Padding(4, 0, 4, 0);
+			labelDaysOfYearPassed.Location = new Point(54, 49);
+			labelDaysOfYearPassed.Margin = new Padding(3);
 			labelDaysOfYearPassed.Name = "labelDaysOfYearPassed";
 			labelDaysOfYearPassed.Size = new Size(255, 15);
 			labelDaysOfYearPassed.TabIndex = 4;
@@ -1076,9 +1052,9 @@ namespace DaysCounter
 			labelDaysOfYearPassed.MouseEnter += SetStatusBar_Enter;
 			labelDaysOfYearPassed.MouseLeave += ClearStatusBar_Leave;
 			labelDaysOfYearPassed.MouseHover += ClearStatusBar_Leave;
-			//
+			// 
 			// tabPageDateCalculation
-			//
+			// 
 			tabPageDateCalculation.AccessibleDescription = "Shows the tab page \"Date calculation\"";
 			tabPageDateCalculation.AccessibleName = "Tab page \"Date calculation\"";
 			tabPageDateCalculation.AccessibleRole = AccessibleRole.PageTab;
@@ -1097,10 +1073,9 @@ namespace DaysCounter
 			tabPageDateCalculation.Controls.Add(buttonSwitchDateCalculationStart);
 			tabPageDateCalculation.Controls.Add(dateTimePickerCalculationStart);
 			tabPageDateCalculation.Controls.Add(labelDateCalculationStart);
+			tabPageDateCalculation.ImageKey = "calendar-blue.png";
 			tabPageDateCalculation.Location = new Point(4, 44);
-			tabPageDateCalculation.Margin = new Padding(4, 3, 4, 3);
 			tabPageDateCalculation.Name = "tabPageDateCalculation";
-			tabPageDateCalculation.Padding = new Padding(4, 3, 4, 3);
 			tabPageDateCalculation.Size = new Size(417, 96);
 			tabPageDateCalculation.TabIndex = 6;
 			tabPageDateCalculation.Text = "Date calculation";
@@ -1111,257 +1086,15 @@ namespace DaysCounter
 			tabPageDateCalculation.Leave += ClearStatusBar_Leave;
 			tabPageDateCalculation.MouseEnter += SetStatusBar_Enter;
 			tabPageDateCalculation.MouseLeave += ClearStatusBar_Leave;
-			//
-			// labelDateCalculationStart
-			//
-			labelDateCalculationStart.AccessibleDescription = "Shows the description of the start date";
-			labelDateCalculationStart.AccessibleName = "Description of the start date";
-			labelDateCalculationStart.AccessibleRole = AccessibleRole.StaticText;
-			labelDateCalculationStart.AutoEllipsis = true;
-			labelDateCalculationStart.AutoSize = true;
-			labelDateCalculationStart.Location = new Point(9, 12);
-			labelDateCalculationStart.Margin = new Padding(4, 0, 4, 0);
-			labelDateCalculationStart.Name = "labelDateCalculationStart";
-			labelDateCalculationStart.Size = new Size(58, 15);
-			labelDateCalculationStart.TabIndex = 0;
-			labelDateCalculationStart.Text = "&Start date:";
-			toolTip.SetToolTip(labelDateCalculationStart, "The start date for the calculation");
-			labelDateCalculationStart.Enter += SetStatusBar_Enter;
-			labelDateCalculationStart.Leave += ClearStatusBar_Leave;
-			labelDateCalculationStart.MouseEnter += SetStatusBar_Enter;
-			labelDateCalculationStart.MouseLeave += ClearStatusBar_Leave;
-			//
-			// dateTimePickerCalculationStart
-			//
-			dateTimePickerCalculationStart.AccessibleDescription = "Shows the start date";
-			dateTimePickerCalculationStart.AccessibleName = "Start date";
-			dateTimePickerCalculationStart.AccessibleRole = AccessibleRole.SpinButton;
-			dateTimePickerCalculationStart.Location = new Point(77, 7);
-			dateTimePickerCalculationStart.Margin = new Padding(4, 3, 4, 3);
-			dateTimePickerCalculationStart.Name = "dateTimePickerCalculationStart";
-			dateTimePickerCalculationStart.Size = new Size(208, 23);
-			dateTimePickerCalculationStart.TabIndex = 1;
-			toolTip.SetToolTip(dateTimePickerCalculationStart, "Sets the start date for the calculation");
-			dateTimePickerCalculationStart.ValueChanged += DateTimePickerCalculationStart_ValueChanged;
-			dateTimePickerCalculationStart.Enter += SetStatusBar_Enter;
-			dateTimePickerCalculationStart.Leave += ClearStatusBar_Leave;
-			dateTimePickerCalculationStart.MouseEnter += SetStatusBar_Enter;
-			dateTimePickerCalculationStart.MouseLeave += ClearStatusBar_Leave;
-			//
-			// buttonSwitchDateCalculationStart
-			//
-			buttonSwitchDateCalculationStart.AccessibleDescription = "Switches the input method of the start date";
-			buttonSwitchDateCalculationStart.AccessibleName = "Changes the input method of the start date";
-			buttonSwitchDateCalculationStart.AccessibleRole = AccessibleRole.PushButton;
-			buttonSwitchDateCalculationStart.AutoEllipsis = true;
-			buttonSwitchDateCalculationStart.Image = Resources.switch_small;
-			buttonSwitchDateCalculationStart.Location = new Point(293, 7);
-			buttonSwitchDateCalculationStart.Margin = new Padding(4, 3, 4, 3);
-			buttonSwitchDateCalculationStart.Name = "buttonSwitchDateCalculationStart";
-			buttonSwitchDateCalculationStart.Size = new Size(23, 23);
-			buttonSwitchDateCalculationStart.TabIndex = 2;
-			toolTip.SetToolTip(buttonSwitchDateCalculationStart, "Change the input method of the start date");
-			buttonSwitchDateCalculationStart.UseVisualStyleBackColor = true;
-			buttonSwitchDateCalculationStart.Click += ButtonSwitchDateCalculationStart_Click;
-			buttonSwitchDateCalculationStart.Enter += SetStatusBar_Enter;
-			buttonSwitchDateCalculationStart.Leave += ClearStatusBar_Leave;
-			buttonSwitchDateCalculationStart.MouseEnter += SetStatusBar_Enter;
-			buttonSwitchDateCalculationStart.MouseLeave += ClearStatusBar_Leave;
-			//
-			// labelYears
-			//
-			labelYears.AccessibleDescription = "Shows the description of the years";
-			labelYears.AccessibleName = "Description of the years";
-			labelYears.AccessibleRole = AccessibleRole.StaticText;
-			labelYears.AutoEllipsis = true;
-			labelYears.AutoSize = true;
-			labelYears.Location = new Point(9, 39);
-			labelYears.Margin = new Padding(4, 0, 4, 0);
-			labelYears.Name = "labelYears";
-			labelYears.Size = new Size(42, 15);
-			labelYears.TabIndex = 3;
-			labelYears.Text = "&Years:";
-			toolTip.SetToolTip(labelYears, "The number of years to add or subtract");
-			labelYears.Enter += SetStatusBar_Enter;
-			labelYears.Leave += ClearStatusBar_Leave;
-			labelYears.MouseEnter += SetStatusBar_Enter;
-			labelYears.MouseLeave += ClearStatusBar_Leave;
-			//
-			// numericUpDownYears
-			//
-			numericUpDownYears.AccessibleDescription = "Changes the number of years";
-			numericUpDownYears.AccessibleName = "Years";
-			numericUpDownYears.AccessibleRole = AccessibleRole.SpinButton;
-			numericUpDownYears.Location = new Point(77, 37);
-			numericUpDownYears.Margin = new Padding(4, 3, 4, 3);
-			numericUpDownYears.Maximum = new decimal(new int[] { 9999, 0, 0, 0 });
-			numericUpDownYears.Name = "numericUpDownYears";
-			numericUpDownYears.Size = new Size(60, 23);
-			numericUpDownYears.TabIndex = 4;
-			numericUpDownYears.TextAlign = HorizontalAlignment.Center;
-			toolTip.SetToolTip(numericUpDownYears, "Sets the number of years to add or subtract");
-			numericUpDownYears.ValueChanged += NumericUpDownYears_ValueChanged;
-			numericUpDownYears.Enter += SetStatusBar_Enter;
-			numericUpDownYears.Leave += ClearStatusBar_Leave;
-			//
-			// labelMonths
-			//
-			labelMonths.AccessibleDescription = "Shows the description of the months";
-			labelMonths.AccessibleName = "Description of the months";
-			labelMonths.AccessibleRole = AccessibleRole.StaticText;
-			labelMonths.AutoEllipsis = true;
-			labelMonths.AutoSize = true;
-			labelMonths.Location = new Point(148, 39);
-			labelMonths.Margin = new Padding(4, 0, 4, 0);
-			labelMonths.Name = "labelMonths";
-			labelMonths.Size = new Size(53, 15);
-			labelMonths.TabIndex = 5;
-			labelMonths.Text = "&Months:";
-			toolTip.SetToolTip(labelMonths, "The number of months to add or subtract");
-			labelMonths.Enter += SetStatusBar_Enter;
-			labelMonths.Leave += ClearStatusBar_Leave;
-			labelMonths.MouseEnter += SetStatusBar_Enter;
-			labelMonths.MouseLeave += ClearStatusBar_Leave;
-			//
-			// numericUpDownMonths
-			//
-			numericUpDownMonths.AccessibleDescription = "Changes the number of months";
-			numericUpDownMonths.AccessibleName = "Months";
-			numericUpDownMonths.AccessibleRole = AccessibleRole.SpinButton;
-			numericUpDownMonths.Location = new Point(205, 37);
-			numericUpDownMonths.Margin = new Padding(4, 3, 4, 3);
-			numericUpDownMonths.Maximum = new decimal(new int[] { 999999, 0, 0, 0 });
-			numericUpDownMonths.Name = "numericUpDownMonths";
-			numericUpDownMonths.Size = new Size(60, 23);
-			numericUpDownMonths.TabIndex = 6;
-			numericUpDownMonths.TextAlign = HorizontalAlignment.Center;
-			toolTip.SetToolTip(numericUpDownMonths, "Sets the number of months to add or subtract");
-			numericUpDownMonths.ValueChanged += NumericUpDownMonths_ValueChanged;
-			numericUpDownMonths.Enter += SetStatusBar_Enter;
-			numericUpDownMonths.Leave += ClearStatusBar_Leave;
-			//
-			// labelDaysCalculation
-			//
-			labelDaysCalculation.AccessibleDescription = "Shows the description of the days";
-			labelDaysCalculation.AccessibleName = "Description of the days";
-			labelDaysCalculation.AccessibleRole = AccessibleRole.StaticText;
-			labelDaysCalculation.AutoEllipsis = true;
-			labelDaysCalculation.AutoSize = true;
-			labelDaysCalculation.Location = new Point(276, 39);
-			labelDaysCalculation.Margin = new Padding(4, 0, 4, 0);
-			labelDaysCalculation.Name = "labelDaysCalculation";
-			labelDaysCalculation.Size = new Size(37, 15);
-			labelDaysCalculation.TabIndex = 7;
-			labelDaysCalculation.Text = "&Days:";
-			toolTip.SetToolTip(labelDaysCalculation, "The number of days to add or subtract");
-			labelDaysCalculation.Enter += SetStatusBar_Enter;
-			labelDaysCalculation.Leave += ClearStatusBar_Leave;
-			labelDaysCalculation.MouseEnter += SetStatusBar_Enter;
-			labelDaysCalculation.MouseLeave += ClearStatusBar_Leave;
-			//
-			// numericUpDownDaysCalculation
-			//
-			numericUpDownDaysCalculation.AccessibleDescription = "Changes the number of days";
-			numericUpDownDaysCalculation.AccessibleName = "Days";
-			numericUpDownDaysCalculation.AccessibleRole = AccessibleRole.SpinButton;
-			numericUpDownDaysCalculation.Location = new Point(319, 37);
-			numericUpDownDaysCalculation.Margin = new Padding(4, 3, 4, 3);
-			numericUpDownDaysCalculation.Maximum = new decimal(new int[] { 999999, 0, 0, 0 });
-			numericUpDownDaysCalculation.Name = "numericUpDownDaysCalculation";
-			numericUpDownDaysCalculation.Size = new Size(60, 23);
-			numericUpDownDaysCalculation.TabIndex = 8;
-			numericUpDownDaysCalculation.TextAlign = HorizontalAlignment.Center;
-			toolTip.SetToolTip(numericUpDownDaysCalculation, "Sets the number of days to add or subtract");
-			numericUpDownDaysCalculation.ValueChanged += NumericUpDownDaysCalculation_ValueChanged;
-			numericUpDownDaysCalculation.Enter += SetStatusBar_Enter;
-			numericUpDownDaysCalculation.Leave += ClearStatusBar_Leave;
-			//
-			// radioButtonFuture
-			//
-			radioButtonFuture.AccessibleDescription = "Calculates the resulting date in the future";
-			radioButtonFuture.AccessibleName = "Future";
-			radioButtonFuture.AccessibleRole = AccessibleRole.RadioButton;
-			radioButtonFuture.AutoSize = true;
-			radioButtonFuture.Checked = true;
-			radioButtonFuture.Location = new Point(9, 65);
-			radioButtonFuture.Margin = new Padding(4, 3, 4, 3);
-			radioButtonFuture.Name = "radioButtonFuture";
-			radioButtonFuture.Size = new Size(60, 19);
-			radioButtonFuture.TabIndex = 9;
-			radioButtonFuture.TabStop = true;
-			radioButtonFuture.Text = "&Future";
-			toolTip.SetToolTip(radioButtonFuture, "Calculates the date in the future");
-			radioButtonFuture.UseVisualStyleBackColor = true;
-			radioButtonFuture.CheckedChanged += RadioButtonFuture_CheckedChanged;
-			radioButtonFuture.Enter += SetStatusBar_Enter;
-			radioButtonFuture.Leave += ClearStatusBar_Leave;
-			radioButtonFuture.MouseEnter += SetStatusBar_Enter;
-			radioButtonFuture.MouseLeave += ClearStatusBar_Leave;
-			//
-			// radioButtonPast
-			//
-			radioButtonPast.AccessibleDescription = "Calculates the resulting date in the past";
-			radioButtonPast.AccessibleName = "Past";
-			radioButtonPast.AccessibleRole = AccessibleRole.RadioButton;
-			radioButtonPast.AutoSize = true;
-			radioButtonPast.Location = new Point(77, 65);
-			radioButtonPast.Margin = new Padding(4, 3, 4, 3);
-			radioButtonPast.Name = "radioButtonPast";
-			radioButtonPast.Size = new Size(50, 19);
-			radioButtonPast.TabIndex = 10;
-			radioButtonPast.Text = "&Past";
-			toolTip.SetToolTip(radioButtonPast, "Calculates the date in the past");
-			radioButtonPast.UseVisualStyleBackColor = true;
-			radioButtonPast.Enter += SetStatusBar_Enter;
-			radioButtonPast.Leave += ClearStatusBar_Leave;
-			radioButtonPast.MouseEnter += SetStatusBar_Enter;
-			radioButtonPast.MouseLeave += ClearStatusBar_Leave;
-			//
-			// labelDateCalculationResult
-			//
-			labelDateCalculationResult.AccessibleDescription = "Shows the description of the calculated date";
-			labelDateCalculationResult.AccessibleName = "Description of the calculated date";
-			labelDateCalculationResult.AccessibleRole = AccessibleRole.StaticText;
-			labelDateCalculationResult.AutoEllipsis = true;
-			labelDateCalculationResult.AutoSize = true;
-			labelDateCalculationResult.Location = new Point(148, 69);
-			labelDateCalculationResult.Margin = new Padding(4, 0, 4, 0);
-			labelDateCalculationResult.Name = "labelDateCalculationResult";
-			labelDateCalculationResult.Size = new Size(44, 15);
-			labelDateCalculationResult.TabIndex = 11;
-			labelDateCalculationResult.Text = "Result:";
-			toolTip.SetToolTip(labelDateCalculationResult, "The calculated date");
-			labelDateCalculationResult.Enter += SetStatusBar_Enter;
-			labelDateCalculationResult.Leave += ClearStatusBar_Leave;
-			labelDateCalculationResult.MouseEnter += SetStatusBar_Enter;
-			labelDateCalculationResult.MouseLeave += ClearStatusBar_Leave;
-			//
-			// dateTimePickerCalculationResult
-			//
-			dateTimePickerCalculationResult.AccessibleDescription = "Shows the calculated date";
-			dateTimePickerCalculationResult.AccessibleName = "Calculated date";
-			dateTimePickerCalculationResult.AccessibleRole = AccessibleRole.SpinButton;
-			dateTimePickerCalculationResult.Enabled = false;
-			dateTimePickerCalculationResult.Location = new Point(196, 65);
-			dateTimePickerCalculationResult.Margin = new Padding(4, 3, 4, 3);
-			dateTimePickerCalculationResult.Name = "dateTimePickerCalculationResult";
-			dateTimePickerCalculationResult.Size = new Size(150, 23);
-			dateTimePickerCalculationResult.TabIndex = 12;
-			toolTip.SetToolTip(dateTimePickerCalculationResult, "The resulting date of the calculation");
-			dateTimePickerCalculationResult.Enter += SetStatusBar_Enter;
-			dateTimePickerCalculationResult.Leave += ClearStatusBar_Leave;
-			dateTimePickerCalculationResult.MouseEnter += SetStatusBar_Enter;
-			dateTimePickerCalculationResult.MouseLeave += ClearStatusBar_Leave;
-			//
+			// 
 			// buttonDateCalculationCopyFromClipboard
-			//
+			// 
 			buttonDateCalculationCopyFromClipboard.AccessibleDescription = "Copies the date from the clipboard to the calendar";
 			buttonDateCalculationCopyFromClipboard.AccessibleName = "Copy from clipboard";
 			buttonDateCalculationCopyFromClipboard.AccessibleRole = AccessibleRole.PushButton;
 			buttonDateCalculationCopyFromClipboard.AutoEllipsis = true;
-			buttonDateCalculationCopyFromClipboard.Image = (Image)resources.GetObject("buttonDateToDateCopyFromClipboard.Image");
+			buttonDateCalculationCopyFromClipboard.Image = (Image)resources.GetObject("buttonDateCalculationCopyFromClipboard.Image");
 			buttonDateCalculationCopyFromClipboard.Location = new Point(383, 7);
-			buttonDateCalculationCopyFromClipboard.Margin = new Padding(4, 3, 4, 3);
 			buttonDateCalculationCopyFromClipboard.Name = "buttonDateCalculationCopyFromClipboard";
 			buttonDateCalculationCopyFromClipboard.Size = new Size(26, 26);
 			buttonDateCalculationCopyFromClipboard.TabIndex = 13;
@@ -1372,15 +1105,14 @@ namespace DaysCounter
 			buttonDateCalculationCopyFromClipboard.Leave += ClearStatusBar_Leave;
 			buttonDateCalculationCopyFromClipboard.MouseEnter += SetStatusBar_Enter;
 			buttonDateCalculationCopyFromClipboard.MouseLeave += ClearStatusBar_Leave;
-			//
+			// 
 			// buttonDateCalculationCopyToClipboard
-			//
+			// 
 			buttonDateCalculationCopyToClipboard.AccessibleDescription = "Copies the calculated date to clipboard";
 			buttonDateCalculationCopyToClipboard.AccessibleName = "Copy to clipboard";
 			buttonDateCalculationCopyToClipboard.AccessibleRole = AccessibleRole.PushButton;
-			buttonDateCalculationCopyToClipboard.Image = (Image)resources.GetObject("buttonDateToDateCopyToClipboard.Image");
+			buttonDateCalculationCopyToClipboard.Image = (Image)resources.GetObject("buttonDateCalculationCopyToClipboard.Image");
 			buttonDateCalculationCopyToClipboard.Location = new Point(383, 64);
-			buttonDateCalculationCopyToClipboard.Margin = new Padding(4, 3, 4, 3);
 			buttonDateCalculationCopyToClipboard.Name = "buttonDateCalculationCopyToClipboard";
 			buttonDateCalculationCopyToClipboard.Size = new Size(26, 26);
 			buttonDateCalculationCopyToClipboard.TabIndex = 14;
@@ -1391,7 +1123,240 @@ namespace DaysCounter
 			buttonDateCalculationCopyToClipboard.Leave += ClearStatusBar_Leave;
 			buttonDateCalculationCopyToClipboard.MouseEnter += SetStatusBar_Enter;
 			buttonDateCalculationCopyToClipboard.MouseLeave += ClearStatusBar_Leave;
-			//
+			// 
+			// dateTimePickerCalculationResult
+			// 
+			dateTimePickerCalculationResult.AccessibleDescription = "Shows the calculated date";
+			dateTimePickerCalculationResult.AccessibleName = "Calculated date";
+			dateTimePickerCalculationResult.AccessibleRole = AccessibleRole.SpinButton;
+			dateTimePickerCalculationResult.Enabled = false;
+			dateTimePickerCalculationResult.Location = new Point(182, 65);
+			dateTimePickerCalculationResult.Name = "dateTimePickerCalculationResult";
+			dateTimePickerCalculationResult.Size = new Size(197, 23);
+			dateTimePickerCalculationResult.TabIndex = 12;
+			toolTip.SetToolTip(dateTimePickerCalculationResult, "The resulting date of the calculation");
+			dateTimePickerCalculationResult.Enter += SetStatusBar_Enter;
+			dateTimePickerCalculationResult.Leave += ClearStatusBar_Leave;
+			dateTimePickerCalculationResult.MouseEnter += SetStatusBar_Enter;
+			dateTimePickerCalculationResult.MouseLeave += ClearStatusBar_Leave;
+			// 
+			// labelDateCalculationResult
+			// 
+			labelDateCalculationResult.AccessibleDescription = "Shows the description of the calculated date";
+			labelDateCalculationResult.AccessibleName = "Description of the calculated date";
+			labelDateCalculationResult.AccessibleRole = AccessibleRole.StaticText;
+			labelDateCalculationResult.AutoEllipsis = true;
+			labelDateCalculationResult.AutoSize = true;
+			labelDateCalculationResult.Location = new Point(128, 66);
+			labelDateCalculationResult.Margin = new Padding(3);
+			labelDateCalculationResult.Name = "labelDateCalculationResult";
+			labelDateCalculationResult.Size = new Size(42, 15);
+			labelDateCalculationResult.TabIndex = 11;
+			labelDateCalculationResult.Text = "Result:";
+			toolTip.SetToolTip(labelDateCalculationResult, "The calculated date");
+			labelDateCalculationResult.Enter += SetStatusBar_Enter;
+			labelDateCalculationResult.Leave += ClearStatusBar_Leave;
+			labelDateCalculationResult.MouseEnter += SetStatusBar_Enter;
+			labelDateCalculationResult.MouseLeave += ClearStatusBar_Leave;
+			// 
+			// radioButtonPast
+			// 
+			radioButtonPast.AccessibleDescription = "Calculates the resulting date in the past";
+			radioButtonPast.AccessibleName = "Past";
+			radioButtonPast.AccessibleRole = AccessibleRole.RadioButton;
+			radioButtonPast.AutoSize = true;
+			radioButtonPast.Location = new Point(73, 62);
+			radioButtonPast.Name = "radioButtonPast";
+			radioButtonPast.Size = new Size(47, 19);
+			radioButtonPast.TabIndex = 10;
+			radioButtonPast.Text = "&Past";
+			toolTip.SetToolTip(radioButtonPast, "Calculates the date in the past");
+			radioButtonPast.UseVisualStyleBackColor = true;
+			radioButtonPast.Enter += SetStatusBar_Enter;
+			radioButtonPast.Leave += ClearStatusBar_Leave;
+			radioButtonPast.MouseEnter += SetStatusBar_Enter;
+			radioButtonPast.MouseLeave += ClearStatusBar_Leave;
+			// 
+			// radioButtonFuture
+			// 
+			radioButtonFuture.AccessibleDescription = "Calculates the resulting date in the future";
+			radioButtonFuture.AccessibleName = "Future";
+			radioButtonFuture.AccessibleRole = AccessibleRole.RadioButton;
+			radioButtonFuture.AutoSize = true;
+			radioButtonFuture.Checked = true;
+			radioButtonFuture.Location = new Point(5, 62);
+			radioButtonFuture.Name = "radioButtonFuture";
+			radioButtonFuture.Size = new Size(59, 19);
+			radioButtonFuture.TabIndex = 9;
+			radioButtonFuture.TabStop = true;
+			radioButtonFuture.Text = "&Future";
+			toolTip.SetToolTip(radioButtonFuture, "Calculates the date in the future");
+			radioButtonFuture.UseVisualStyleBackColor = true;
+			radioButtonFuture.CheckedChanged += RadioButtonFuture_CheckedChanged;
+			radioButtonFuture.Enter += SetStatusBar_Enter;
+			radioButtonFuture.Leave += ClearStatusBar_Leave;
+			radioButtonFuture.MouseEnter += SetStatusBar_Enter;
+			radioButtonFuture.MouseLeave += ClearStatusBar_Leave;
+			// 
+			// numericUpDownDaysCalculation
+			// 
+			numericUpDownDaysCalculation.AccessibleDescription = "Changes the number of days";
+			numericUpDownDaysCalculation.AccessibleName = "Days";
+			numericUpDownDaysCalculation.AccessibleRole = AccessibleRole.SpinButton;
+			numericUpDownDaysCalculation.Location = new Point(319, 37);
+			numericUpDownDaysCalculation.Maximum = new decimal(new int[] { 999999, 0, 0, 0 });
+			numericUpDownDaysCalculation.Name = "numericUpDownDaysCalculation";
+			numericUpDownDaysCalculation.Size = new Size(60, 23);
+			numericUpDownDaysCalculation.TabIndex = 8;
+			numericUpDownDaysCalculation.TextAlign = HorizontalAlignment.Center;
+			toolTip.SetToolTip(numericUpDownDaysCalculation, "Sets the number of days to add or subtract");
+			numericUpDownDaysCalculation.ValueChanged += NumericUpDownDaysCalculation_ValueChanged;
+			numericUpDownDaysCalculation.Enter += SetStatusBar_Enter;
+			numericUpDownDaysCalculation.Leave += ClearStatusBar_Leave;
+			// 
+			// labelDaysCalculation
+			// 
+			labelDaysCalculation.AccessibleDescription = "Shows the description of the days";
+			labelDaysCalculation.AccessibleName = "Description of the days";
+			labelDaysCalculation.AccessibleRole = AccessibleRole.StaticText;
+			labelDaysCalculation.AutoEllipsis = true;
+			labelDaysCalculation.AutoSize = true;
+			labelDaysCalculation.Location = new Point(272, 36);
+			labelDaysCalculation.Margin = new Padding(3);
+			labelDaysCalculation.Name = "labelDaysCalculation";
+			labelDaysCalculation.Size = new Size(35, 15);
+			labelDaysCalculation.TabIndex = 7;
+			labelDaysCalculation.Text = "&Days:";
+			toolTip.SetToolTip(labelDaysCalculation, "The number of days to add or subtract");
+			labelDaysCalculation.Enter += SetStatusBar_Enter;
+			labelDaysCalculation.Leave += ClearStatusBar_Leave;
+			labelDaysCalculation.MouseEnter += SetStatusBar_Enter;
+			labelDaysCalculation.MouseLeave += ClearStatusBar_Leave;
+			// 
+			// numericUpDownMonths
+			// 
+			numericUpDownMonths.AccessibleDescription = "Changes the number of months";
+			numericUpDownMonths.AccessibleName = "Months";
+			numericUpDownMonths.AccessibleRole = AccessibleRole.SpinButton;
+			numericUpDownMonths.Location = new Point(205, 37);
+			numericUpDownMonths.Maximum = new decimal(new int[] { 999999, 0, 0, 0 });
+			numericUpDownMonths.Name = "numericUpDownMonths";
+			numericUpDownMonths.Size = new Size(60, 23);
+			numericUpDownMonths.TabIndex = 6;
+			numericUpDownMonths.TextAlign = HorizontalAlignment.Center;
+			toolTip.SetToolTip(numericUpDownMonths, "Sets the number of months to add or subtract");
+			numericUpDownMonths.ValueChanged += NumericUpDownMonths_ValueChanged;
+			numericUpDownMonths.Enter += SetStatusBar_Enter;
+			numericUpDownMonths.Leave += ClearStatusBar_Leave;
+			// 
+			// labelMonths
+			// 
+			labelMonths.AccessibleDescription = "Shows the description of the months";
+			labelMonths.AccessibleName = "Description of the months";
+			labelMonths.AccessibleRole = AccessibleRole.StaticText;
+			labelMonths.AutoEllipsis = true;
+			labelMonths.AutoSize = true;
+			labelMonths.Location = new Point(144, 36);
+			labelMonths.Margin = new Padding(3);
+			labelMonths.Name = "labelMonths";
+			labelMonths.Size = new Size(51, 15);
+			labelMonths.TabIndex = 5;
+			labelMonths.Text = "&Months:";
+			toolTip.SetToolTip(labelMonths, "The number of months to add or subtract");
+			labelMonths.Enter += SetStatusBar_Enter;
+			labelMonths.Leave += ClearStatusBar_Leave;
+			labelMonths.MouseEnter += SetStatusBar_Enter;
+			labelMonths.MouseLeave += ClearStatusBar_Leave;
+			// 
+			// numericUpDownYears
+			// 
+			numericUpDownYears.AccessibleDescription = "Changes the number of years";
+			numericUpDownYears.AccessibleName = "Years";
+			numericUpDownYears.AccessibleRole = AccessibleRole.SpinButton;
+			numericUpDownYears.Location = new Point(77, 37);
+			numericUpDownYears.Maximum = new decimal(new int[] { 9999, 0, 0, 0 });
+			numericUpDownYears.Name = "numericUpDownYears";
+			numericUpDownYears.Size = new Size(60, 23);
+			numericUpDownYears.TabIndex = 4;
+			numericUpDownYears.TextAlign = HorizontalAlignment.Center;
+			toolTip.SetToolTip(numericUpDownYears, "Sets the number of years to add or subtract");
+			numericUpDownYears.ValueChanged += NumericUpDownYears_ValueChanged;
+			numericUpDownYears.Enter += SetStatusBar_Enter;
+			numericUpDownYears.Leave += ClearStatusBar_Leave;
+			// 
+			// labelYears
+			// 
+			labelYears.AccessibleDescription = "Shows the description of the years";
+			labelYears.AccessibleName = "Description of the years";
+			labelYears.AccessibleRole = AccessibleRole.StaticText;
+			labelYears.AutoEllipsis = true;
+			labelYears.AutoSize = true;
+			labelYears.Location = new Point(5, 36);
+			labelYears.Margin = new Padding(3);
+			labelYears.Name = "labelYears";
+			labelYears.Size = new Size(37, 15);
+			labelYears.TabIndex = 3;
+			labelYears.Text = "&Years:";
+			toolTip.SetToolTip(labelYears, "The number of years to add or subtract");
+			labelYears.Enter += SetStatusBar_Enter;
+			labelYears.Leave += ClearStatusBar_Leave;
+			labelYears.MouseEnter += SetStatusBar_Enter;
+			labelYears.MouseLeave += ClearStatusBar_Leave;
+			// 
+			// buttonSwitchDateCalculationStart
+			// 
+			buttonSwitchDateCalculationStart.AccessibleDescription = "Switches the input method of the start date";
+			buttonSwitchDateCalculationStart.AccessibleName = "Changes the input method of the start date";
+			buttonSwitchDateCalculationStart.AccessibleRole = AccessibleRole.PushButton;
+			buttonSwitchDateCalculationStart.AutoEllipsis = true;
+			buttonSwitchDateCalculationStart.Image = Resources.switch_small;
+			buttonSwitchDateCalculationStart.Location = new Point(293, 7);
+			buttonSwitchDateCalculationStart.Name = "buttonSwitchDateCalculationStart";
+			buttonSwitchDateCalculationStart.Size = new Size(23, 23);
+			buttonSwitchDateCalculationStart.TabIndex = 2;
+			toolTip.SetToolTip(buttonSwitchDateCalculationStart, "Change the input method of the start date");
+			buttonSwitchDateCalculationStart.UseVisualStyleBackColor = true;
+			buttonSwitchDateCalculationStart.Click += ButtonSwitchDateCalculationStart_Click;
+			buttonSwitchDateCalculationStart.Enter += SetStatusBar_Enter;
+			buttonSwitchDateCalculationStart.Leave += ClearStatusBar_Leave;
+			buttonSwitchDateCalculationStart.MouseEnter += SetStatusBar_Enter;
+			buttonSwitchDateCalculationStart.MouseLeave += ClearStatusBar_Leave;
+			// 
+			// dateTimePickerCalculationStart
+			// 
+			dateTimePickerCalculationStart.AccessibleDescription = "Shows the start date";
+			dateTimePickerCalculationStart.AccessibleName = "Start date";
+			dateTimePickerCalculationStart.AccessibleRole = AccessibleRole.SpinButton;
+			dateTimePickerCalculationStart.Location = new Point(77, 7);
+			dateTimePickerCalculationStart.Name = "dateTimePickerCalculationStart";
+			dateTimePickerCalculationStart.Size = new Size(208, 23);
+			dateTimePickerCalculationStart.TabIndex = 1;
+			toolTip.SetToolTip(dateTimePickerCalculationStart, "Sets the start date for the calculation");
+			dateTimePickerCalculationStart.ValueChanged += DateTimePickerCalculationStart_ValueChanged;
+			dateTimePickerCalculationStart.Enter += SetStatusBar_Enter;
+			dateTimePickerCalculationStart.Leave += ClearStatusBar_Leave;
+			dateTimePickerCalculationStart.MouseEnter += SetStatusBar_Enter;
+			dateTimePickerCalculationStart.MouseLeave += ClearStatusBar_Leave;
+			// 
+			// labelDateCalculationStart
+			// 
+			labelDateCalculationStart.AccessibleDescription = "Shows the description of the start date";
+			labelDateCalculationStart.AccessibleName = "Description of the start date";
+			labelDateCalculationStart.AccessibleRole = AccessibleRole.StaticText;
+			labelDateCalculationStart.AutoEllipsis = true;
+			labelDateCalculationStart.AutoSize = true;
+			labelDateCalculationStart.Location = new Point(5, 9);
+			labelDateCalculationStart.Margin = new Padding(3);
+			labelDateCalculationStart.Name = "labelDateCalculationStart";
+			labelDateCalculationStart.Size = new Size(60, 15);
+			labelDateCalculationStart.TabIndex = 0;
+			labelDateCalculationStart.Text = "&Start date:";
+			toolTip.SetToolTip(labelDateCalculationStart, "The start date for the calculation");
+			labelDateCalculationStart.Enter += SetStatusBar_Enter;
+			labelDateCalculationStart.Leave += ClearStatusBar_Leave;
+			labelDateCalculationStart.MouseEnter += SetStatusBar_Enter;
+			labelDateCalculationStart.MouseLeave += ClearStatusBar_Leave;
+			// 
 			// tabPageAbout
 			// 
 			tabPageAbout.AccessibleDescription = "Shows the tab page \"About\"";
@@ -1403,9 +1368,7 @@ namespace DaysCounter
 			tabPageAbout.Controls.Add(pictureBox);
 			tabPageAbout.ImageKey = "information-button.png";
 			tabPageAbout.Location = new Point(4, 44);
-			tabPageAbout.Margin = new Padding(4, 3, 4, 3);
 			tabPageAbout.Name = "tabPageAbout";
-			tabPageAbout.Padding = new Padding(4, 3, 4, 3);
 			tabPageAbout.Size = new Size(417, 96);
 			tabPageAbout.TabIndex = 2;
 			tabPageAbout.Text = "About";
@@ -1423,8 +1386,7 @@ namespace DaysCounter
 			pictureBox.AccessibleName = "Apllication logo";
 			pictureBox.AccessibleRole = AccessibleRole.Graphic;
 			pictureBox.Image = (Image)resources.GetObject("pictureBox.Image");
-			pictureBox.Location = new Point(10, 8);
-			pictureBox.Margin = new Padding(4, 3, 4, 3);
+			pictureBox.Location = new Point(14, 3);
 			pictureBox.Name = "pictureBox";
 			pictureBox.Size = new Size(37, 37);
 			pictureBox.TabIndex = 0;
@@ -1584,9 +1546,9 @@ namespace DaysCounter
 			tabPageDaysOfYear.PerformLayout();
 			tabPageDateCalculation.ResumeLayout(false);
 			tabPageDateCalculation.PerformLayout();
-			((ISupportInitialize)numericUpDownYears).EndInit();
-			((ISupportInitialize)numericUpDownMonths).EndInit();
 			((ISupportInitialize)numericUpDownDaysCalculation).EndInit();
+			((ISupportInitialize)numericUpDownMonths).EndInit();
+			((ISupportInitialize)numericUpDownYears).EndInit();
 			tabPageAbout.ResumeLayout(false);
 			tabPageAbout.PerformLayout();
 			((ISupportInitialize)pictureBox).EndInit();

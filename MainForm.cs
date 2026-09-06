@@ -106,6 +106,7 @@ public partial class MainForm : Form
 		{
 			// Calculate the resulting date using the DateCalculator class
 			DateTime resultDate = DateCalculator.CalculateDateFromYearsMonthsDays(start: start, years: years, months: months, days: days, isFuture: isFuture);
+
 			// Update the date picker to show the resulting date
 			dateTimePickerCalculationResult.Value = ClampDate(value: resultDate, minDate: dateTimePickerCalculationResult.MinDate, maxDate: dateTimePickerCalculationResult.MaxDate);
 		}
@@ -127,20 +128,14 @@ public partial class MainForm : Form
 	/// <returns>The clamped date.</returns>
 	private static DateTime ClampDate(DateTime value, DateTime minDate, DateTime maxDate)
 	{
-		if (value < minDate)
-		{
-			return minDate;
-		}
-
-		return value > maxDate ? maxDate : value;
+		return value < minDate ? minDate : value > maxDate ? maxDate : value;
 	}
 
 	/// <summary>Handles exceptions by logging the error and showing a message box</summary>
 	/// <param name="ex">The exception that occurred</param>
 	/// <param name="message">The message to log and display</param>
 	/// <param name="sender">The source of the event that caused the exception</param>
-	/// <param name="e">The event data associated with the exception</param>
-	private static void HandleException(Exception ex, string message, object? sender = null, EventArgs? e = null)
+	private static void HandleException(Exception ex, string message, object? sender = null)
 	{
 		// Structured logging; detailed information is in the log
 		logger.Error(exception: ex, message: "Exception occurred. Message: {Message} | Sender: {Sender}", args: (message, sender));
@@ -154,7 +149,6 @@ public partial class MainForm : Form
 
 	/// <summary>Shows the status bar</summary>
 	/// <param name="text">The text to display in the status bar.</param>
-	/// <param name="text">text with some information</param>
 	private void SetStatusBarText(string text)
 	{
 		// Enable the label only if there is text to show
