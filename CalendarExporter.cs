@@ -2,7 +2,9 @@
 
 namespace DaysCounter;
 
-/// <summary>Exports calendar events in ICS format.</summary>
+/// <summary>
+/// Exports calendar events in ICS format.
+/// </summary>
 public class CalendarExporter
 {
 	/// <summary>Creates an ICS file for a full-day event.</summary>

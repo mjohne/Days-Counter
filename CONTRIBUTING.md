@@ -4,7 +4,7 @@
 
 - Strictly follow the rules in `.editorconfig` (indentation, newline policy, naming conventions).
 
-- Use the specified C# version (`13.0`) and target framework `.NET 9`.
+- Use the specified C# version (`13.0`) and target framework `.NET 10` (`net10.0-windows7.0`).
 
 - Methods, fields, and variables should use PascalCase or camelCase as specified in `.editorconfig`.
 

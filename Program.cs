@@ -48,7 +48,6 @@ internal static class Program
 		try
 		{
 			// Log structured and complete
-			logger.Error(exception: ex, message: userMessage);
 			LogError(ex: ex);
 
 			// Inform user with a generic message
@@ -68,7 +67,7 @@ internal static class Program
 		}
 	}
 
-	/// <summary>Logs error details</summary>
+	/// <summary>Logs error details.</summary>
 	/// <param name="ex">The exception.</param>
 	private static void LogError(Exception ex)
 	{

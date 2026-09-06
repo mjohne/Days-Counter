@@ -12,7 +12,7 @@
     <ApplicationIcon>Resources\logo.ico</ApplicationIcon>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
     <Title>Days Counter</Title>
-    <Version>1.7.0.17</Version>
+    <Version>1.8.0.18</Version>
     <Authors>Mijo Software</Authors>
     <Description>A simple application that counts the number of days between two dates, or tracks the number of days since a specific event.</Description>
     <Copyright>2019-2026 Mijo Software</Copyright>
@@ -23,6 +23,7 @@
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
     <EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
+    <RepositoryType>git</RepositoryType>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -80,7 +81,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="NLog" Version="6.1.0" />
+    <PackageReference Include="NLog" Version="6.2.0" />
   </ItemGroup>
 
   <ItemGroup>
